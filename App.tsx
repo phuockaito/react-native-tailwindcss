@@ -1,12 +1,14 @@
-import React from "react";
-import { SafeAreaView, Text } from 'react-native';
+import React from 'react';
+import { SafeAreaView, Text, View } from 'react-native';
 
-function App(): JSX.Element {
+
+const App = () => {
     return (
         <SafeAreaView>
-            <Text>ss 11</Text>
+            <View>
+                <Text className="text-red-500">Hello word</Text>
+            </View>
         </SafeAreaView>
-    );
-}
-
+    )
+};
 export default App;
