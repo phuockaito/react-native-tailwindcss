@@ -15,5 +15,10 @@
     "tabWidth": 4,
     "trailingComma": "es5",
     "useTabs": false,
-    "vueIndentScriptAndStyle": false
+    "vueIndentScriptAndStyle": false,
+    "plugins": [
+        "prettier-plugin-svelte",
+        "prettier-plugin-organize-imports",
+        "prettier-plugin-tailwindcss"
+    ]
 }

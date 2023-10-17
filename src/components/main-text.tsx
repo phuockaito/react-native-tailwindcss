@@ -1,10 +1,11 @@
-import React from 'react'
-import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
-import { useCounter } from '@/hooks'
+import { useCounter } from "@/hooks";
+import React from "react";
+import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 
 export const MainText = () => {
     const { result, handleIncrement } = useCounter();
-    console.log('useCounter', result)
+    console.log("useCounter", result);
+
     return (
         <SafeAreaView>
             <View className="flex-row gap-2">
@@ -19,5 +20,5 @@ export const MainText = () => {
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
-    )
-}
+    );
+};
