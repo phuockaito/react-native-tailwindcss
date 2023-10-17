@@ -1,5 +1,5 @@
 
-import { counterSlice } from "../features";
+import { counterSlice } from "@/features";
 
 export const reducer = {
     storeCounter: counterSlice.reducer

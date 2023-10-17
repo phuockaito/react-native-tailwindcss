@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { useAppSelector, useAppDispatch } from './use-react-redux'
-import { onIncrement, searchStore } from '../features'
+import { onIncrement, searchStore } from '@/features'
 
 export const useCounter = () => {
     const result = useAppSelector(searchStore);

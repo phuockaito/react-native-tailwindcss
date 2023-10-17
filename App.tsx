@@ -1,7 +1,8 @@
 import React from 'react';
 import { Provider } from "react-redux";
 
-import { MainText, store } from './src';
+import { store } from '@/store';
+import { MainText } from "@/components"
 
 const App = () => {
     return (
