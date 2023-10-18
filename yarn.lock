@@ -7757,6 +7757,11 @@ react-native-devsettings@^1.0.5:
   resolved "https://registry.yarnpkg.com/react-native-devsettings/-/react-native-devsettings-1.0.5.tgz#3ee079fea99338a2b00de293340c8d11629f16dd"
   integrity sha512-JFdE3/oqIqtAi1HgdseMB+zRHVG9CQpsxMUVd+GXmaQQIyY+Kh2bWB3wdSA8+ojTunaahZkvb9fIFRrLUWdROQ==
 
+react-native-responsive-screen@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-responsive-screen/-/react-native-responsive-screen-1.4.2.tgz#45280826d24f9accbfdf46a36cb8e6d780f76f28"
+  integrity sha512-BLYz0UUpeohrib7jbz6wDmtBD5OmiuMRko4IT8kIF63taXPod/c5iZgmWnr5qOnK8hMuKiGMvsM3sC+eHX/lEQ==
+
 react-native-vector-icons@^10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-10.0.0.tgz#0f031f7717f76f0a397f725de9b5a47ec87862e9"
