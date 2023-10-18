@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import queryString from "query-string";
 
-import { REACT_APP_API_URL } from "@/constans";
+import { REACT_APP_API_URL } from "@/constants";
 
 export const axiosClient = axios.create({
     baseURL: REACT_APP_API_URL,

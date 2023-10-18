@@ -1,8 +1,9 @@
+import { formatView } from "@/constants";
 import { useMusic } from "@/hooks";
 import { ItemMusicType } from "@/type";
 import * as React from "react";
 import { FlatList, Image, SafeAreaView, Text, View } from "react-native";
-
+import EvilIcons from "react-native-vector-icons/EvilIcons";
 
 export const MainText = () => {
     const { fetchGetTopViewsMusic, resultStoreMusic } = useMusic();
@@ -22,8 +23,8 @@ export const MainText = () => {
     };
 
     return (
-        <SafeAreaView style={{ backgroundColor: "#21212a" }}>
-            <View className="p-1">
+        <SafeAreaView style={{ backgroundColor: "#21212a", padding: 20 }}>
+            <View>
                 <FlatList
                     horizontal={false}
                     numColumns={2}
@@ -49,11 +50,28 @@ export const MainText = () => {
                                     className="text-xs">
                                     {item.name_singer.length > 25 ? item.name_singer.slice(0, 25) : item.name_singer}
                                 </Text>
+                                <View className="flex-row items-center justify-between">
+                                    <View className="flex-row items-center gap-2">
+                                        <EvilIcons
+                                            name="eye"
+                                            size={20}
+                                            color="#a5a6c4"
+                                        />
+                                        <Text style={{ color: "#a5a6c4" }}>{formatView(item.view)}</Text>
+                                    </View>
+                                    <View className="flex-row items-center gap-2 ml-1">
+                                        <EvilIcons
+                                            name="heart"
+                                            size={20}
+                                            color="#a5a6c4"
+                                        />
+                                        <Text style={{ color: "#a5a6c4" }}>{formatView(item.favorite)}</Text>
+                                    </View>
+                                </View>
                             </View>
                         )
                     }}
                     keyExtractor={item => item._id}
-
                 />
             </View>
         </SafeAreaView>
