@@ -14,8 +14,8 @@ export const MainText = () => {
     if (resultStoreMusic.loading) {
         return (
             <SafeAreaView>
-                <View className="items-center justify-center">
-                    <Text>Loading....</Text>
+                <View className="items-center justify-center h-full">
+                    <Text className="text-3xl font-semibold">Loading....</Text>
                 </View>
             </SafeAreaView>
         );
@@ -23,7 +23,7 @@ export const MainText = () => {
 
     return (
         <SafeAreaView style={{ backgroundColor: "#21212a", padding: 20 }}>
-            <View className="">
+            <View className="h-full">
                 <FlatList
                     horizontal={false}
                     numColumns={2}

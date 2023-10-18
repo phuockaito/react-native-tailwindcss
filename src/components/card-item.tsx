@@ -11,6 +11,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
             <Image
                 width={wp(45)}
                 height={hp(20)}
+                resizeMode="cover"
                 className="rounded-lg"
                 source={{
                     uri: item.image_music,
@@ -27,7 +28,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                     <EvilIcons name="eye" size={20} color="#a5a6c4" />
                     <Text style={{ color: "#a5a6c4" }}>{formatView(item.view)}</Text>
                 </View>
-                <View className="ml-1 flex-row items-center gap-1">
+                <View className="flex-row items-center gap-1 ml-1">
                     <EvilIcons name="heart" size={20} color="#a5a6c4" />
                     <Text style={{ color: "#a5a6c4" }}>{formatView(item.favorite)}</Text>
                 </View>
