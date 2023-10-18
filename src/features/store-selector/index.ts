@@ -1,3 +1,2 @@
 import { RootState } from "@/store";
-
-export const searchStore = (state: RootState) => state.storeCounter;
+export const musicStore = (state: RootState) => state.storeMusic;

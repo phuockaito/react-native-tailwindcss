@@ -1,5 +1,5 @@
-import { counterSlice } from "@/features";
+import { musicSlice } from "@/features";
 
 export const reducer = {
-    storeCounter: counterSlice.reducer,
+    storeMusic: musicSlice.reducer,
 };
