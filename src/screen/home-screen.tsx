@@ -2,9 +2,9 @@ import * as React from "react";
 import { FlatList, SafeAreaView, Text, View } from "react-native";
 
 import { useMusic } from "@/hooks";
-import { CardItem } from "./card-item";
+import { CardItem } from "@/components";
 
-export const MainText = () => {
+export const HomeScreen = () => {
     const { fetchGetTopViewsMusic, resultStoreMusic } = useMusic();
 
     React.useEffect(() => {

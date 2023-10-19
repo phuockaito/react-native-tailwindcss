@@ -1,1 +1,1 @@
-export * from "./main-text";
+export * from "./card-item";
