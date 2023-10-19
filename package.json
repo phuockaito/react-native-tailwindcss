@@ -14,6 +14,7 @@
     "dependencies": {
         "@gluestack-style/react": "^1.0.5",
         "@gluestack-ui/themed": "^1.0.5",
+        "@react-navigation/bottom-tabs": "^6.5.9",
         "@react-navigation/native": "^6.1.8",
         "@reduxjs/toolkit": "^1.9.7",
         "axios": "^1.5.1",
@@ -24,6 +25,7 @@
         "react-native": "^0.72.6",
         "react-native-devsettings": "^1.0.5",
         "react-native-responsive-screen": "^1.4.2",
+        "react-native-svg": "^13.14.0",
         "react-redux": "^8.1.3"
     },
     "devDependencies": {
