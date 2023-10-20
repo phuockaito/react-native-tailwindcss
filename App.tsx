@@ -1,5 +1,7 @@
 import * as React from 'react';
+import SplashScreen from 'react-native-splash-screen'
 import { Provider } from "react-redux";
+import { Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -14,6 +16,12 @@ const HomeStack = createNativeStackNavigator();
 const TabBottom = createBottomTabNavigator();
 
 function App() {
+
+    React.useEffect(() => {
+        if (Platform.OS === "android")
+            SplashScreen.hide();
+    }, []);
+
     return (
         <Provider store={store}>
             <NavigationContainer>
