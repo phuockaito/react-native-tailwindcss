@@ -1,8 +1,8 @@
 import * as React from "react";
 import { FlatList, SafeAreaView, Text, View } from "react-native";
 
-import { useMusic } from "@/hooks";
 import { CardItem } from "@/components";
+import { useMusic } from "@/hooks";
 
 export const HomeScreen = () => {
     const { fetchGetTopViewsMusic, resultStoreMusic } = useMusic();
@@ -14,7 +14,7 @@ export const HomeScreen = () => {
     if (resultStoreMusic.loading) {
         return (
             <SafeAreaView>
-                <View className="items-center justify-center h-full">
+                <View className="h-full items-center justify-center">
                     <Text className="text-3xl font-semibold">Loading....</Text>
                 </View>
             </SafeAreaView>

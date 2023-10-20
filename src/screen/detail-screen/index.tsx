@@ -1,18 +1,19 @@
-import * as React from 'react'
-import { RouteProp } from '@react-navigation/native';
-import { View } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import * as React from "react";
+import { View } from "react-native";
 
+import { CardItem } from "@/components";
 import { ItemMusicType } from "@/type";
-import { CardItem } from '@/components';
 
 type IncidentRouteParams = {
     item: ItemMusicType;
-}
+};
 
 export const DetailScreen = () => {
     const navigation = useNavigation();
-    const { params: { item } } = useRoute<RouteProp<Record<string, IncidentRouteParams>, string>>();;
+    const {
+        params: { item },
+    } = useRoute<RouteProp<Record<string, IncidentRouteParams>, string>>();
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -22,15 +23,12 @@ export const DetailScreen = () => {
             },
             headerTintColor: "white",
             headerBackTitleVisible: false,
-        })
+        });
     }, []);
 
     return (
-        <View
-            className="items-center justify-center w-full h-full"
-            style={{ backgroundColor: "#21212a" }}
-        >
+        <View className="h-full w-full items-center justify-center" style={{ backgroundColor: "#21212a" }}>
             <CardItem item={item} />
         </View>
-    )
-}
+    );
+};

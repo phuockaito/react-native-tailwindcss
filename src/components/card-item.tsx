@@ -2,8 +2,8 @@ import { Image, Pressable, Text, View } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 
-import { ParamListBase, useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { ParamListBase, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import { formatView } from "@/constants";
 import { ItemMusicType } from "@/type";
@@ -37,7 +37,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                         <EvilIcons name="eye" size={20} color="#a5a6c4" />
                         <Text style={{ color: "#a5a6c4" }}>{formatView(item.view)}</Text>
                     </View>
-                    <View className="flex-row items-center gap-1 ml-1">
+                    <View className="ml-1 flex-row items-center gap-1">
                         <EvilIcons name="heart" size={20} color="#a5a6c4" />
                         <Text style={{ color: "#a5a6c4" }}>{formatView(item.favorite)}</Text>
                     </View>

@@ -1,6 +1,6 @@
-import { Text, View } from '@gluestack-ui/themed'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Text, View } from "@gluestack-ui/themed";
+import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export const UploadScreen = () => {
     return (
@@ -9,5 +9,5 @@ export const UploadScreen = () => {
                 <Text>Upload Screen</Text>
             </View>
         </SafeAreaView>
-    )
-}
+    );
+};

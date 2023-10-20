@@ -9,7 +9,7 @@
         "dev": "react-native start",
         "test": "jest",
         "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.jsx|*.js)\"",
-        "prettier": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js)\""
+        "prettier:check": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js)\""
     },
     "dependencies": {
         "@gluestack-style/react": "^1.0.5",
