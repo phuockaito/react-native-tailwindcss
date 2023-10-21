@@ -26,9 +26,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                         uri: item.image_music,
                     }}
                 />
-                <Text className="text-sm text-white">
-                    {item.name_music.length > 25 ? `${item.name_music.slice(0, 25)}...` : item.name_music}
-                </Text>
+                <Text className="text-sm text-white">{item.name_music.length > 25 ? `${item.name_music.slice(0, 25)}...` : item.name_music}</Text>
                 <Text style={{ color: "#01aaed" }} className="text-xs">
                     {item.name_singer.length > 25 ? item.name_singer.slice(0, 25) : item.name_singer}
                 </Text>

@@ -492,6 +492,8 @@ PODS:
   - RNScreens (3.26.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
+  - RNSoundPlayer (0.13.2):
+    - React-Core
   - RNSVG (13.14.0):
     - React-Core
   - RNVectorIcons (10.0.0):
@@ -567,6 +569,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSoundPlayer (from `../node_modules/react-native-sound-player`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -672,6 +675,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSoundPlayer:
+    :path: "../node_modules/react-native-sound-player"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
@@ -733,6 +738,7 @@ SPEC CHECKSUMS:
   React-utils: fa59c9a3375fb6f4aeb66714fd3f7f76b43a9f16
   ReactCommon: dd03c17275c200496f346af93a7b94c53f3093a4
   RNScreens: 2a28f2973f4d0d4623e18629ebfc2c4adaceb39a
+  RNSoundPlayer: 369105c565b8fe6ea0a43fc882dc81eba444e842
   RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396
   RNVectorIcons: 8b5bb0fa61d54cd2020af4f24a51841ce365c7e9
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
