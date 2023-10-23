@@ -4,6 +4,7 @@ import { Image, Pressable, View, Text } from 'react-native';
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Slider from '@react-native-community/slider';
+import TrackPlayer from 'react-native-track-player';
 
 import { ItemMusicType } from "@/type";
 import SoundPlayer from "react-native-sound-player";
@@ -22,6 +23,22 @@ export const DetailScreen = () => {
 
     const [isPlaying, setIsPlaying] = React.useState<boolean>(true);
     const [currentTime, setCurrentTime] = React.useState<number>(0)
+    const start = async () => {
+        // Set up the player
+        await TrackPlayer.setupPlayer();
+
+        // Add a track to the queue
+        await TrackPlayer.add({
+            id: 'trackId',
+            url: item.src_music,
+            title: 'Track Title',
+            artist: 'Track Artist',
+            artwork: item.image_music
+        });
+
+        // Start playing it
+        await TrackPlayer.play();
+    };
 
     React.useLayoutEffect(() => {
         (async () => {
@@ -33,28 +50,11 @@ export const DetailScreen = () => {
                 headerTintColor: "white",
                 headerBackTitleVisible: false,
             });
-            SoundPlayer.onFinishedLoading((success: boolean) => success);
-            SoundPlayer.onFinishedPlaying((success: boolean) => success);
-            SoundPlayer.playUrl(item.src_music);
+            // SoundPlayer.onFinishedLoading((success: boolean) => success);
+            // SoundPlayer.onFinishedPlaying((success: boolean) => success);
+            // SoundPlayer.playUrl(item.src_music);
         })()
     }, []);
-
-    React.useEffect(() => {
-        const timer = setInterval(async () => {
-            const info = await SoundPlayer.getInfo();
-            setCurrentTime(info.currentTime);
-
-        }, 500);
-
-        return () => clearInterval(timer);
-    }, [isPlaying]);
-    React.useEffect(() => {
-        if (isPlaying) {
-            SoundPlayer.play();
-        } else {
-            SoundPlayer.pause();
-        }
-    }, [isPlaying]);
     return (
         <View className="flex-col justify-center w-full h-full" style={{ backgroundColor: "#21212a" }}>
             <Image
@@ -94,7 +94,7 @@ export const DetailScreen = () => {
                     <Pressable>
                         <SimpleLineIcons name="control-rewind" size={25} color="#a5a6c4" />
                     </Pressable>
-                    <Pressable onPress={() => setIsPlaying((isPlaying) => !isPlaying)}>
+                    <Pressable onPress={start}>
                         <SimpleLineIcons name={isPlaying ? "control-pause" : "control-play"} size={25} color="#a5a6c4" />
                     </Pressable>
                     <Pressable>
