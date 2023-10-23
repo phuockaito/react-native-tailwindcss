@@ -495,6 +495,8 @@ PODS:
     - React-perflogger (= 0.72.6)
   - RNAudioRecorderPlayer (3.6.1):
     - React-Core
+  - RNCAsyncStorage (1.19.3):
+    - React-Core
   - RNScreens (3.26.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
@@ -577,6 +579,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNAudioRecorderPlayer (from `../node_modules/react-native-audio-recorder-player`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSoundPlayer (from `../node_modules/react-native-sound-player`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -688,6 +691,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNAudioRecorderPlayer:
     :path: "../node_modules/react-native-audio-recorder-player"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSoundPlayer:
@@ -755,6 +760,7 @@ SPEC CHECKSUMS:
   React-utils: fa59c9a3375fb6f4aeb66714fd3f7f76b43a9f16
   ReactCommon: dd03c17275c200496f346af93a7b94c53f3093a4
   RNAudioRecorderPlayer: 711f14e1f7634c9765e274245eeca51206c9cf0f
+  RNCAsyncStorage: c913ede1fa163a71cea118ed4670bbaaa4b511bb
   RNScreens: 2a28f2973f4d0d4623e18629ebfc2c4adaceb39a
   RNSoundPlayer: 369105c565b8fe6ea0a43fc882dc81eba444e842
   RNSVG: d00c8f91c3cbf6d476451313a18f04d220d4f396

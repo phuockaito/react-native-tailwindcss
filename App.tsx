@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { store } from '@/store';
-import { DetailScreen, HistoryScreen, HomeScreen, UploadScreen } from "@/screen";
+import { AccountScreen, DetailScreen, HistoryScreen, HomeScreen, UploadScreen } from "@/screen";
 import Octicons from "react-native-vector-icons/Octicons";
 
 import "react-native-devsettings";
@@ -82,6 +82,7 @@ const TabBottomGroup = () => {
             />
             <TabBottom.Screen name="Upload" component={UploadScreen} />
             <TabBottom.Screen name="History" component={HistoryScreen} />
+            <TabBottom.Screen name="Person" component={AccountScreen} />
         </TabBottom.Navigator>
     )
 };

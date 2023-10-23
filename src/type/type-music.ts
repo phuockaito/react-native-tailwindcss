@@ -1,4 +1,4 @@
-export interface InitialStateType {
+export interface InitialStateMusicSliceType {
     data: ItemMusicType[];
     loading: boolean;
 }

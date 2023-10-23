@@ -1,5 +1,6 @@
-import { asyncThunkGetTopViewsMusic, musicStore } from "@/features";
 import * as React from "react";
+
+import { asyncThunkGetTopViewsMusic, musicStore } from "@/features";
 import { useAppDispatch, useAppSelector } from "./use-react-redux";
 
 export const useMusic = () => {

@@ -1,8 +1,8 @@
-import { InitialStateType } from "@/type";
+import { InitialStateMusicSliceType } from "@/type";
 import { ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
 import { asyncThunkGetTopViewsMusic } from "./patch-api";
 
-const initialState: InitialStateType = {
+const initialState: InitialStateMusicSliceType = {
     data: [],
     loading: true,
 };
@@ -11,7 +11,7 @@ export const musicSlice = createSlice({
     name: "music",
     initialState,
     reducers: {},
-    extraReducers(builder: ActionReducerMapBuilder<InitialStateType>) {
+    extraReducers(builder: ActionReducerMapBuilder<InitialStateMusicSliceType>) {
         builder
             .addCase(asyncThunkGetTopViewsMusic.pending, (state) => {
                 state.loading = true;

@@ -1,27 +1,26 @@
+import Slider from "@react-native-community/slider";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import * as React from "react";
-import { Image, Pressable, View, Text } from 'react-native';
+import { Image, Pressable, Text, View } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-import Slider from '@react-native-community/slider';
 
+import { formatDuration } from "@/constants";
 import { ItemMusicType } from "@/type";
 import SoundPlayer from "react-native-sound-player";
-import { formatDuration } from "@/constants";
 
 type IncidentRouteParams = {
     item: ItemMusicType;
 };
 
 export const DetailScreen = () => {
-
     const navigation = useNavigation();
     const {
         params: { item },
     } = useRoute<RouteProp<Record<string, IncidentRouteParams>, string>>();
 
     const [isPlaying, setIsPlaying] = React.useState<boolean>(true);
-    const [currentTime, setCurrentTime] = React.useState<number>(0)
+    const [currentTime, setCurrentTime] = React.useState<number>(0);
 
     React.useLayoutEffect(() => {
         (async () => {
@@ -36,14 +35,13 @@ export const DetailScreen = () => {
             SoundPlayer.onFinishedLoading((success: boolean) => success);
             SoundPlayer.onFinishedPlaying((success: boolean) => success);
             SoundPlayer.playUrl(item.src_music);
-        })()
+        })();
     }, []);
 
     React.useEffect(() => {
         const timer = setInterval(async () => {
             const info = await SoundPlayer.getInfo();
             setCurrentTime(info.currentTime);
-
         }, 500);
 
         return () => clearInterval(timer);
@@ -56,12 +54,12 @@ export const DetailScreen = () => {
         }
     }, [isPlaying]);
     return (
-        <View className="flex-col justify-center w-full h-full" style={{ backgroundColor: "#21212a" }}>
+        <View className="h-full w-full flex-col justify-center" style={{ backgroundColor: "#21212a" }}>
             <Image
                 source={{
                     uri: item.image_music,
                 }}
-                className="absolute w-full h-full opacity-20"
+                className="absolute h-full w-full opacity-20"
             />
             <View className="items-center justify-between">
                 <Image
