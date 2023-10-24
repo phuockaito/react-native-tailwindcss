@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FlatList, SafeAreaView, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, SafeAreaView, View } from "react-native";
 
 import { CardItem } from "@/components";
 import { useMusic } from "@/hooks";
@@ -13,9 +13,9 @@ export const HomeScreen = () => {
 
     if (resultStoreMusic.loading) {
         return (
-            <SafeAreaView>
-                <View className="h-full items-center justify-center">
-                    <Text className="text-3xl font-semibold">Loading....</Text>
+            <SafeAreaView style={{ backgroundColor: "#21212a", padding: 20 }}>
+                <View className="items-center justify-center h-full">
+                    <ActivityIndicator size="large" color="#ffff" className="mr-2" />
                 </View>
             </SafeAreaView>
         );

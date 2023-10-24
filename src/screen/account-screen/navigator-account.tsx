@@ -14,7 +14,13 @@ export const AccountStackGroup = () => {
                 name="Person"
                 component={AccountScreen}
             />
-            <AccountStack.Screen name="Register" component={RegisterScreen} />
+            <AccountStack.Screen
+                name="Register"
+                component={RegisterScreen}
+                options={{
+                    headerShown: false,
+                }}
+            />
         </AccountStack.Navigator>
     );
 };

@@ -3,6 +3,12 @@ export interface PayloadLoginType {
     password: string;
 }
 
+export interface PayloadRegisterType {
+    email: string;
+    password: string;
+    userName: string;
+}
+
 export interface AccountType {
     _id: string;
     user_name: string;

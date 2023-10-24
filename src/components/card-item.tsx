@@ -1,6 +1,8 @@
-import { Image, Pressable, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
+import FastImage from 'react-native-fast-image'
+
 
 import { ParamListBase, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -17,14 +19,15 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
             }}
         >
             <View className="gap-1">
-                <Image
-                    width={wp(45)}
-                    height={wp(45)}
-                    resizeMode="cover"
-                    className="rounded-lg"
+                <FastImage
+                    style={{ width: wp(45), height: wp(45) }}
                     source={{
                         uri: item.image_music,
+                        priority: FastImage.priority.high,
+                        cache: FastImage.cacheControl.immutable,
                     }}
+                    className="rounded-xl"
+                    resizeMode={FastImage.resizeMode.cover}
                 />
                 <Text className="text-sm text-white">{item.name_music.length > 25 ? `${item.name_music.slice(0, 25)}...` : item.name_music}</Text>
                 <Text style={{ color: "#01aaed" }} className="text-xs">
@@ -35,7 +38,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                         <EvilIcons name="eye" size={20} color="#a5a6c4" />
                         <Text style={{ color: "#a5a6c4" }}>{formatView(item.view)}</Text>
                     </View>
-                    <View className="ml-1 flex-row items-center gap-1">
+                    <View className="flex-row items-center gap-1 ml-1">
                         <EvilIcons name="heart" size={20} color="#a5a6c4" />
                         <Text style={{ color: "#a5a6c4" }}>{formatView(item.favorite)}</Text>
                     </View>

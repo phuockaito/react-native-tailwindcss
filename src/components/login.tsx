@@ -9,6 +9,11 @@ import { useAccount } from "@/hooks";
 import { PayloadLoginType } from "@/type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Feather from "react-native-vector-icons/Feather";
+import { unwrapResult } from "@reduxjs/toolkit";
+interface ResponseErrorType {
+    message: string;
+    status: number;
+}
 
 const schema = yup.object().shape({
     email: yup.string().email("Email không họp lệ").required("Vui lòng nhập email của bạn!"),
@@ -19,7 +24,7 @@ const schema = yup.object().shape({
         .max(32, "Mật khẩu phải có nhiều nhất 32 ký tự")
         .matches(
             /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-            "Phải chứa một chữ hoa, một chữ thường, một số và một ký tự viết hoa đặc biệt!"
+            "Ký tự chữ hoa, chữ thường, ký tự đặc biệt!"
         ),
 });
 
@@ -27,6 +32,7 @@ export const Login = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const { handlePostLogin, resultStoreAccount } = useAccount();
     const [showPassword, setShowPassword] = React.useState(true);
+    const [messageError, setMessageError] = React.useState<string>("");
 
     const {
         handleSubmit,
@@ -38,11 +44,13 @@ export const Login = () => {
     const onSubmit = async (data: PayloadLoginType) => {
         try {
             if (!resultStoreAccount.loading) {
-                await handlePostLogin(data);
-                // const payload = unwrapResult(result);
+                setMessageError("");
+                const response = await handlePostLogin(data);
+                await unwrapResult(response);
             }
-        } catch (error) {
-            console.log(error);
+        } catch (error: any) {
+            const response: ResponseErrorType = JSON.parse(error.message);
+            setMessageError(response.message)
         }
     };
 
@@ -58,8 +66,8 @@ export const Login = () => {
                 backgroundColor: "#21212a",
             }}
         >
-            <View className="gap h-full w-full flex-col justify-center px-4">
-                <Text className="relative bottom-5 text-center text-2xl text-white">Đăng nhập</Text>
+            <View className="flex-col justify-center w-full h-full px-4 gap">
+                <Text className="relative text-2xl font-semibold text-center text-white bottom-5">Đăng nhập</Text>
                 <Controller
                     control={control}
                     rules={{
@@ -67,11 +75,11 @@ export const Login = () => {
                     }}
                     render={({ field: { onChange, onBlur, value } }) => {
                         return (
-                            <View className="mb-6 gap-2">
+                            <View className="gap-2 mb-6">
                                 <Text className="text-slate-200">Email</Text>
                                 <TextInput
                                     autoCapitalize="none"
-                                    className="h-10 rounded-md px-3"
+                                    className="h-10 px-3 rounded-md"
                                     value={value}
                                     onChangeText={onChange}
                                     onBlur={onBlur}
@@ -96,10 +104,10 @@ export const Login = () => {
                         return (
                             <View className="gap-2">
                                 <Text className="text-slate-200">Password</Text>
-                                <View className="relative flex h-10 items-end justify-center">
+                                <View className="relative flex items-end justify-center h-10">
                                     <TextInput
                                         secureTextEntry={showPassword}
-                                        className="absolute h-full w-full rounded-md px-3 text-white"
+                                        className="absolute w-full h-full px-3 text-white rounded-md"
                                         value={value}
                                         onChangeText={onChange}
                                         onBlur={onBlur}
@@ -123,16 +131,19 @@ export const Login = () => {
                 />
                 <Pressable onPress={handleSubmit(onSubmit)}>
                     <View
-                        className="mt-6 flex-row items-center justify-center rounded-md p-3"
+                        className="flex-row items-center justify-center p-3 mt-8 rounded-md"
                         style={{
                             backgroundColor: "#1890ff",
                         }}
                     >
-                        {resultStoreAccount.loading && <ActivityIndicator size="small" color="#ffff" className="mr-2" />}
-                        <Text className="text-center text-white">Đăng nhập</Text>
+                        {resultStoreAccount.loading ?
+                            <ActivityIndicator size="small" color="#ffff" />
+                            : <Text className="text-center text-white">Đăng nhập</Text>
+                        }
                     </View>
                 </Pressable>
-                <View className="mt-7 flex-row justify-center gap-x-1">
+                {messageError && <Text style={{ color: "#ff4d4f" }} className="mt-2 text-center">{messageError}</Text>}
+                <View className="flex-row justify-center mt-4 gap-x-1">
                     <Text className="font-semibold text-blue-500">Bạn chưa có tài khoản?</Text>
                     <Pressable
                         onPress={() => {
