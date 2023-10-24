@@ -1,12 +1,14 @@
-import { useAccount } from "@/hooks";
-import { PayloadLoginType } from "@/type";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigation } from "@react-navigation/native";
+import { ParamListBase, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import * as React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { ActivityIndicator, Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
 import * as yup from "yup";
+
+import { useAccount } from "@/hooks";
+import { PayloadLoginType } from "@/type";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Feather from "react-native-vector-icons/Feather";
 
 const schema = yup.object().shape({
     email: yup.string().email("Email không họp lệ").required("Vui lòng nhập email của bạn!"),
@@ -22,7 +24,7 @@ const schema = yup.object().shape({
 });
 
 export const Login = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const { handlePostLogin, resultStoreAccount } = useAccount();
     const [showPassword, setShowPassword] = React.useState(true);
 
@@ -130,6 +132,16 @@ export const Login = () => {
                         <Text className="text-center text-white">Đăng nhập</Text>
                     </View>
                 </Pressable>
+                <View className="mt-7 flex-row justify-center gap-x-1">
+                    <Text className="font-semibold text-blue-500">Bạn chưa có tài khoản?</Text>
+                    <Pressable
+                        onPress={() => {
+                            navigation.navigate("Register");
+                        }}
+                    >
+                        <Text className="font-semibold text-blue-500">Đăng ký ngay</Text>
+                    </Pressable>
+                </View>
             </View>
         </SafeAreaView>
     );
