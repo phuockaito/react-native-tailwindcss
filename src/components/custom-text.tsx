@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, TextProps, TextStyle } from 'react-native';
+import React from "react";
+import { Text, TextProps, TextStyle } from "react-native";
 
 interface CustomTextProps extends TextProps {
     style?: TextStyle;
@@ -7,9 +7,8 @@ interface CustomTextProps extends TextProps {
 
 export const CustomText: React.FC<CustomTextProps> = ({ children, style, ...rest }) => {
     return (
-        <Text style={[{ fontFamily: 'Glory', fontSize: 16 }, style]} {...rest}>
+        <Text style={[{ fontFamily: "Glory", fontSize: 16 }, style]} {...rest}>
             {children}
-        </Text >
+        </Text>
     );
 };
-

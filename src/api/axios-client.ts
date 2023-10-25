@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import queryString from "query-string";
 
 import { REACT_APP_API_URL } from "@/constants";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const axiosClient = axios.create({
     baseURL: REACT_APP_API_URL,
@@ -13,7 +14,11 @@ export const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use(
-    (config) => {
+    async (config) => {
+        const token = await AsyncStorage.getItem("token");
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
         return config;
     },
     function error() {

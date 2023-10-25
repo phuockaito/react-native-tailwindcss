@@ -40,7 +40,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                         <EvilIcons name="eye" size={20} color="#a5a6c4" />
                         <CustomText style={{ color: "#a5a6c4" }}>{formatView(item.view)}</CustomText>
                     </View>
-                    <View className="flex-row items-center gap-1 ml-1">
+                    <View className="ml-1 flex-row items-center gap-1">
                         <EvilIcons name="heart" size={20} color="#a5a6c4" />
                         <CustomText style={{ color: "#a5a6c4" }}>{formatView(item.favorite)}</CustomText>
                     </View>

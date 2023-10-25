@@ -6,8 +6,12 @@ export const apiAccount = {
         const url = "account/login";
         return axiosClient.post(url, payload);
     },
-    postRegister(payload: PayloadRegisterType): Promise<AccountResponse> {
+    postRegister: (payload: PayloadRegisterType): Promise<AccountResponse> => {
         const url = "account/register";
         return axiosClient.post(url, payload);
+    },
+    getProfile: (): Promise<AccountResponse> => {
+        const url = "account/profile";
+        return axiosClient.get(url);
     },
 };

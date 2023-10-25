@@ -49,7 +49,7 @@ export const ContainerModal = () => {
 
     return (
         <Modal
-            title={<CustomText className="font-semibold text-left">{title}</CustomText>}
+            title={<CustomText className="text-left font-semibold">{title}</CustomText>}
             visible
             maskClosable
             onClose={handleCloseModal}

@@ -10,24 +10,41 @@ import { store } from '@/store';
 import "react-native-devsettings";
 import { TabBottomGroup } from '@/navigator';
 import { ContainerModal } from '@/modal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAccount } from '@/hooks';
 
 function App() {
 
+    return (
+        <Provider store={store}>
+            <MainComponent />
+        </Provider>
+    );
+};
+
+const MainComponent = () => {
+    const { handleGetProfile } = useAccount();
     React.useEffect(() => {
         if (Platform.OS === "android")
             SplashScreen.hide();
     }, []);
 
+    React.useEffect(() => {
+        (async () => {
+            const token = await AsyncStorage.getItem('token');
+            if (token) {
+                handleGetProfile();
+            }
+        })()
+    }, [handleGetProfile]);
     return (
-        <Provider store={store}>
-            <ProviderAntDesign>
-                <NavigationContainer>
-                    <TabBottomGroup />
-                </NavigationContainer>
-                <ContainerModal />
-            </ProviderAntDesign>
-        </Provider>
-    );
-};
+        <ProviderAntDesign>
+            <NavigationContainer>
+                <TabBottomGroup />
+            </NavigationContainer>
+            <ContainerModal />
+        </ProviderAntDesign>
+    )
+}
 
 export default App;

@@ -17,7 +17,7 @@ export const Profile = () => {
                 backgroundColor: "#21212a",
             }}
         >
-            <View className="w-full h-full px-2">
+            <View className="h-full w-full px-2">
                 <Image
                     width={wp(10)}
                     height={wp(10)}

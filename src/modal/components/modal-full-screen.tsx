@@ -8,8 +8,8 @@ export const ModalFullScreen = () => {
     const { handleCloseModal } = useModal();
     return (
         <SafeAreaView>
-            <View className="w-full h-full px-5">
-                <View className="flex-row justify-between mb-1">
+            <View className="h-full w-full px-5">
+                <View className="mb-1 flex-row justify-between">
                     <CustomText className="text-base font-semibold">Thông báo</CustomText>
                     <Pressable onPress={handleCloseModal}>
                         <EvilIcons name="close" size={20} />

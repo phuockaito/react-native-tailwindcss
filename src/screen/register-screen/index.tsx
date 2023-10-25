@@ -24,10 +24,7 @@ const schema = yup.object().shape({
         .required("Vui lòng nhập mật khẩu của bạn!")
         .min(8, "Mật khẩu cần dài ít nhất 8 ký tự")
         .max(32, "Mật khẩu phải có nhiều nhất 32 ký tự")
-        .matches(
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-            "Ký tự chữ hoa, chữ thường, ký tự đặc biệt!"
-        ),
+        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "Ký tự chữ hoa, chữ thường, ký tự đặc biệt!"),
     userName: yup.string().required("Vui lòng nhập tên của bạn!"),
 });
 
@@ -70,8 +67,8 @@ export const RegisterScreen = () => {
                 backgroundColor: "#21212a",
             }}
         >
-            <View className="flex-col justify-center w-full h-full px-4 gap">
-                <CustomText className="relative text-2xl font-semibold text-center text-white bottom-5">Đăng ký</CustomText>
+            <View className="gap h-full w-full flex-col justify-center px-4">
+                <CustomText className="relative bottom-5 text-center text-2xl font-semibold text-white">Đăng ký</CustomText>
                 <Controller
                     control={control}
                     rules={{
@@ -79,11 +76,11 @@ export const RegisterScreen = () => {
                     }}
                     render={({ field: { onChange, onBlur, value } }) => {
                         return (
-                            <View className="gap-2 mb-6">
+                            <View className="mb-6 gap-2">
                                 <CustomText className="text-slate-200">Tên của bạn</CustomText>
                                 <TextInput
                                     autoCapitalize="none"
-                                    className="h-10 px-3 rounded-md"
+                                    className="h-10 rounded-md px-3"
                                     value={value}
                                     onChangeText={onChange}
                                     onBlur={onBlur}
@@ -106,11 +103,11 @@ export const RegisterScreen = () => {
                     }}
                     render={({ field: { onChange, onBlur, value } }) => {
                         return (
-                            <View className="gap-2 mb-6">
+                            <View className="mb-6 gap-2">
                                 <CustomText className="text-slate-200">Email</CustomText>
                                 <TextInput
                                     autoCapitalize="none"
-                                    className="h-10 px-3 rounded-md"
+                                    className="h-10 rounded-md px-3"
                                     value={value}
                                     onChangeText={onChange}
                                     onBlur={onBlur}
@@ -135,10 +132,10 @@ export const RegisterScreen = () => {
                         return (
                             <View className="gap-2">
                                 <CustomText className="text-slate-200">Password</CustomText>
-                                <View className="relative flex items-end justify-center h-10">
+                                <View className="relative flex h-10 items-end justify-center">
                                     <TextInput
                                         secureTextEntry={showPassword}
-                                        className="absolute w-full h-full px-3 text-white rounded-md"
+                                        className="absolute h-full w-full rounded-md px-3 text-white"
                                         value={value}
                                         onChangeText={onChange}
                                         onBlur={onBlur}
@@ -150,11 +147,7 @@ export const RegisterScreen = () => {
                                     />
                                     <View className="mr-4">
                                         <Pressable onPress={() => setShowPassword(!showPassword)}>
-                                            <Feather
-                                                name={showPassword ? "eye-off" : "eye"}
-                                                size={18}
-                                                color="#a5a6c4"
-                                            />
+                                            <Feather name={showPassword ? "eye-off" : "eye"} size={18} color="#a5a6c4" />
                                         </Pressable>
                                     </View>
                                 </View>
@@ -166,7 +159,7 @@ export const RegisterScreen = () => {
                 />
                 <Pressable onPress={handleSubmit(onSubmit)}>
                     <View
-                        className="flex-row items-center justify-center p-3 mt-8 rounded-md"
+                        className="mt-8 flex-row items-center justify-center rounded-md p-3"
                         style={{
                             backgroundColor: "#1890ff",
                         }}
@@ -183,7 +176,7 @@ export const RegisterScreen = () => {
                         {messageError}
                     </CustomText>
                 )}
-                <View className="flex-row justify-center mt-4 gap-x-1">
+                <View className="mt-4 flex-row justify-center gap-x-1">
                     <Pressable
                         onPress={() => {
                             navigation.navigate("Person");

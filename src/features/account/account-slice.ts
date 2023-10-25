@@ -1,6 +1,6 @@
 import { AccountResponse, InitialStateAccountSliceType } from "@/type";
 import { ActionReducerMapBuilder, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { asyncThunkPostLogin, asyncThunkPostRegister } from "./patch-api";
+import { asyncThunkGetProfile, asyncThunkPostLogin, asyncThunkPostRegister } from "./patch-api";
 
 const initialState: InitialStateAccountSliceType = {
     data: null,
@@ -44,6 +44,22 @@ export const accountSlice = createSlice({
             })
             .addCase(asyncThunkPostRegister.rejected, (state) => {
                 state.loading = false;
+            });
+
+        builder
+            .addCase(asyncThunkGetProfile.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(asyncThunkGetProfile.fulfilled, (state, action) => {
+                const { data, accessToken } = action.payload;
+                state.loading = false;
+                state.data = data;
+                state.access_token = accessToken;
+            })
+            .addCase(asyncThunkGetProfile.rejected, (state) => {
+                state.loading = false;
+                state.data = null;
+                state.access_token = null;
             });
     },
 });
