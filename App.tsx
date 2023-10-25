@@ -13,8 +13,7 @@ import { ContainerModal } from '@/modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAccount } from '@/hooks';
 
-function App() {
-
+export const App = () => {
     return (
         <Provider store={store}>
             <MainComponent />
@@ -24,6 +23,7 @@ function App() {
 
 const MainComponent = () => {
     const { handleGetProfile } = useAccount();
+
     React.useEffect(() => {
         if (Platform.OS === "android")
             SplashScreen.hide();
@@ -37,6 +37,7 @@ const MainComponent = () => {
             }
         })()
     }, [handleGetProfile]);
+
     return (
         <ProviderAntDesign>
             <NavigationContainer>
@@ -47,4 +48,3 @@ const MainComponent = () => {
     )
 }
 
-export default App;

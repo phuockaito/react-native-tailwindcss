@@ -13,8 +13,8 @@ export const TabBottomGroup = () => {
         <TabBottom.Navigator
             initialRouteName="HomeStackGroup"
             screenOptions={({ route }) => ({
-                tabBarIcon: ({ color, size }) => {
-                    return <Octicons name={checkIcon(route.name)} color={color} size={size} />;
+                tabBarIcon: ({ color }) => {
+                    return <Octicons name={checkIcon(route.name)} color={color} size={20} />;
                 },
                 tabBarActiveTintColor: "#fff",
                 tabBarInactiveTintColor: "gray",
