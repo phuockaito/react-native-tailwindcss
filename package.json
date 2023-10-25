@@ -12,6 +12,7 @@
         "prettier:check": "prettier --check \"src/**/(*.tsx|*.ts|*.jsx|*.js)\""
     },
     "dependencies": {
+        "@ant-design/react-native": "^5.0.4",
         "@gluestack-style/react": "^1.0.8",
         "@gluestack-ui/themed": "^1.0.8",
         "@hookform/resolvers": "^3.3.2",
@@ -51,6 +52,7 @@
         "@typescript-eslint/eslint-plugin": "^6.8.0",
         "@typescript-eslint/parser": "^6.8.0",
         "babel-jest": "^29.7.0",
+        "babel-plugin-import": "^1.13.8",
         "babel-plugin-module-resolver": "^5.0.0",
         "eslint": "^8.51.0",
         "eslint-config-prettier": "^9.0.0",

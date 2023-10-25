@@ -54,12 +54,12 @@ export const DetailScreen = () => {
         }
     }, [isPlaying]);
     return (
-        <View className="flex-col justify-center w-full h-full" style={{ backgroundColor: "#21212a" }}>
+        <View className="h-full w-full flex-col justify-center" style={{ backgroundColor: "#21212a" }}>
             <Image
                 source={{
                     uri: item.image_music,
                 }}
-                className="absolute w-full h-full opacity-20"
+                className="absolute h-full w-full opacity-20"
             />
             <View className="items-center justify-between">
                 <Image

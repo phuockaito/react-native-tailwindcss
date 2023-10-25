@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { HistoryScreen, UploadScreen } from "@/screen";
+import { HistoryScreen, ModalScreen, UploadScreen } from "@/screen";
 import Octicons from "react-native-vector-icons/Octicons";
 
 import { AccountStackGroup } from "@/screen/account-screen/navigator-account";
@@ -46,6 +46,14 @@ export const TabBottomGroup = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: "Đã nghe",
+                }}
+            />
+            <TabBottom.Screen
+                name="alert"
+                component={ModalScreen}
+                options={{
+                    headerShown: false,
+                    tabBarLabel: "Modal",
                 }}
             />
             <TabBottom.Screen

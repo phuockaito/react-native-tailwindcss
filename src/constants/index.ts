@@ -24,6 +24,14 @@ export const formatDuration = (seconds: number) => {
     }
     return `${mm}:${ss}`;
 };
+
 const pad = (string: number) => {
     return ("0" + string).slice(-2);
+};
+
+export const ModalTypeEnum = {
+    NULL: "NULL",
+    ADD: "ADD",
+    MODAL_FULL_SCREEN: "MODAL_FULL_SCREEN",
+    MODAL_POPUP: "MODAL_POPUP",
 };

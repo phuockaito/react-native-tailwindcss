@@ -15,6 +15,6 @@ export const useAccount = () => {
         resultStoreAccount,
         handlePostLogin,
         handleLogout,
-        handlePostRegister
+        handlePostRegister,
     };
 };

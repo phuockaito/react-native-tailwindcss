@@ -14,7 +14,7 @@ export const HomeScreen = () => {
     if (resultStoreMusic.loading) {
         return (
             <SafeAreaView style={{ backgroundColor: "#21212a", padding: 20 }}>
-                <View className="items-center justify-center h-full">
+                <View className="h-full items-center justify-center">
                     <ActivityIndicator size="large" color="#ffff" className="mr-2" />
                 </View>
             </SafeAreaView>
