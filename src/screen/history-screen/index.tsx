@@ -1,12 +1,13 @@
+import { CustomText } from "@/components";
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export const HistoryScreen = () => {
     return (
         <SafeAreaView>
             <View>
-                <Text>History Screen</Text>
+                <CustomText>History Screen</CustomText>
             </View>
         </SafeAreaView>
     );

@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import EvilIcons from "react-native-vector-icons/EvilIcons";
@@ -8,6 +8,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import { formatView } from "@/constants";
 import { ItemMusicType } from "@/type";
+import { CustomText } from "./custom-text";
 
 export const CardItem = ({ item }: { item: ItemMusicType }) => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -28,20 +29,20 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                     className="rounded-xl"
                     resizeMode={FastImage.resizeMode.cover}
                 />
-                <Text className="text-sm text-white">
+                <CustomText className="text-white ">
                     {item.name_music.length > 25 ? `${item.name_music.slice(0, 25)}...` : item.name_music}
-                </Text>
-                <Text style={{ color: "#01aaed" }} className="text-xs">
+                </CustomText>
+                <CustomText style={{ color: "#01aaed" }}>
                     {item.name_singer.length > 25 ? item.name_singer.slice(0, 25) : item.name_singer}
-                </Text>
+                </CustomText>
                 <View className="flex-row items-center justify-between">
                     <View className="flex-row items-center gap-1">
                         <EvilIcons name="eye" size={20} color="#a5a6c4" />
-                        <Text style={{ color: "#a5a6c4" }}>{formatView(item.view)}</Text>
+                        <CustomText style={{ color: "#a5a6c4" }}>{formatView(item.view)}</CustomText>
                     </View>
-                    <View className="ml-1 flex-row items-center gap-1">
+                    <View className="flex-row items-center gap-1 ml-1">
                         <EvilIcons name="heart" size={20} color="#a5a6c4" />
-                        <Text style={{ color: "#a5a6c4" }}>{formatView(item.favorite)}</Text>
+                        <CustomText style={{ color: "#a5a6c4" }}>{formatView(item.favorite)}</CustomText>
                     </View>
                 </View>
             </View>

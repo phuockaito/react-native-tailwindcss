@@ -3,8 +3,8 @@ import * as React from "react";
 import { ModalTypeEnum } from "@/constants";
 import { Modal } from "@ant-design/react-native";
 
+import { CustomText } from "@/components";
 import { useModal } from "@/hooks/use-modal";
-import { Text } from "react-native";
 import { ModalAdd, ModalFullScreen, ModalPopup } from "./components";
 
 const checkModal = (modalType: string) => {
@@ -49,7 +49,7 @@ export const ContainerModal = () => {
 
     return (
         <Modal
-            title={<Text className="text-left text-base">{title}</Text>}
+            title={<CustomText className="font-semibold text-left">{title}</CustomText>}
             visible
             maskClosable
             onClose={handleCloseModal}

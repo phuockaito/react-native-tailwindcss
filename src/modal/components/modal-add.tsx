@@ -1,10 +1,11 @@
+import { CustomText } from "@/components";
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 export const ModalAdd = () => {
     return (
         <View>
-            <Text>Nội dung</Text>
+            <CustomText>Nội dung</CustomText>
         </View>
     );
 };

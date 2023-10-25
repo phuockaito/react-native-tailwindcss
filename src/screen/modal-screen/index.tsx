@@ -1,7 +1,8 @@
+import { CustomText } from "@/components";
 import { useModal } from "@/hooks";
 import { Flex, Modal } from "@ant-design/react-native";
 import React from "react";
-import { Pressable, Text } from "react-native";
+import { Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export const ModalScreen = () => {
@@ -10,10 +11,10 @@ export const ModalScreen = () => {
         {
             title: "Open Alert",
             onPress: () => {
-                Modal.alert(<Text>Thông báo</Text>, <Text>Nội dung</Text>, [
+                Modal.alert(<CustomText>Thông báo</CustomText>, <CustomText>Nội dung</CustomText>, [
                     {
                         text: "Đóng",
-                        onPress: () => {},
+                        onPress: () => { },
                         style: "cancel",
                     },
                 ]);
@@ -52,7 +53,7 @@ export const ModalScreen = () => {
     ];
 
     return (
-        <SafeAreaView className="h-full w-full items-center justify-center">
+        <SafeAreaView className="items-center justify-center w-full h-full">
             <Flex
                 style={{
                     padding: 12,
@@ -60,8 +61,8 @@ export const ModalScreen = () => {
                 }}
             >
                 {items.map((item, index) => (
-                    <Pressable key={index} className="rounded-lg border border-slate-600 p-3" onPress={item.onPress}>
-                        <Text className="text-slate-600">{item.title}</Text>
+                    <Pressable key={index} className="p-3 border rounded-lg border-slate-600" onPress={item.onPress}>
+                        <CustomText className="text-slate-600">{item.title}</CustomText>
                     </Pressable>
                 ))}
             </Flex>

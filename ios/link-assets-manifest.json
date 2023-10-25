@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/font/Glory-Italic-VariableFont_wght.ttf",
+      "sha1": "8a9a3568d25e7d18e6c64bc36de90a6c0fdfc4df"
+    },
+    {
+      "path": "src/assets/font/Glory-VariableFont_wght.ttf",
+      "sha1": "b8c83c32712d1c2e4cedcc98e97f622a7040da72"
+    }
+  ]
+}

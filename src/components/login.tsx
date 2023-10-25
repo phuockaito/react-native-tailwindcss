@@ -2,7 +2,7 @@ import { ParamListBase, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import * as React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { ActivityIndicator, Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, Pressable, SafeAreaView, TextInput, View } from "react-native";
 import * as yup from "yup";
 
 import { useAccount } from "@/hooks";
@@ -10,6 +10,7 @@ import { PayloadLoginType } from "@/type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Feather from "react-native-vector-icons/Feather";
+import { CustomText } from "./custom-text";
 interface ResponseErrorType {
     message: string;
     status: number;
@@ -66,8 +67,8 @@ export const Login = () => {
                 backgroundColor: "#21212a",
             }}
         >
-            <View className="gap h-full w-full flex-col justify-center px-4">
-                <Text className="relative bottom-5 text-center text-2xl font-semibold text-white">Đăng nhập</Text>
+            <View className="flex-col justify-center w-full h-full px-4 gap">
+                <CustomText className="relative text-2xl font-semibold text-center text-white bottom-5">Đăng nhập</CustomText>
                 <Controller
                     control={control}
                     rules={{
@@ -75,11 +76,11 @@ export const Login = () => {
                     }}
                     render={({ field: { onChange, onBlur, value } }) => {
                         return (
-                            <View className="mb-6 gap-2">
-                                <Text className="text-slate-200">Email</Text>
+                            <View className="gap-2 mb-6">
+                                <CustomText className="text-slate-200">Email</CustomText>
                                 <TextInput
                                     autoCapitalize="none"
-                                    className="h-10 rounded-md px-3"
+                                    className="h-10 px-3 rounded-md"
                                     value={value}
                                     onChangeText={onChange}
                                     onBlur={onBlur}
@@ -89,7 +90,7 @@ export const Login = () => {
                                         color: "#ffff",
                                     }}
                                 />
-                                {errors.email && <Text style={{ color: "#ff4d4f" }}>{errors.email.message}</Text>}
+                                {errors.email && <CustomText style={{ color: "#ff4d4f" }}>{errors.email.message}</CustomText>}
                             </View>
                         );
                     }}
@@ -103,11 +104,11 @@ export const Login = () => {
                     render={({ field: { onChange, onBlur, value } }) => {
                         return (
                             <View className="gap-2">
-                                <Text className="text-slate-200">Password</Text>
-                                <View className="relative flex h-10 items-end justify-center">
+                                <CustomText className="text-slate-200">Password</CustomText>
+                                <View className="relative flex items-end justify-center h-10">
                                     <TextInput
                                         secureTextEntry={showPassword}
-                                        className="absolute h-full w-full rounded-md px-3 text-white"
+                                        className="absolute w-full h-full px-3 text-white rounded-md"
                                         value={value}
                                         onChangeText={onChange}
                                         onBlur={onBlur}
@@ -127,7 +128,7 @@ export const Login = () => {
                                         </Pressable>
                                     </View>
                                 </View>
-                                {errors.password && <Text style={{ color: "#ff4d4f" }}>{errors.password.message}</Text>}
+                                {errors.password && <CustomText style={{ color: "#ff4d4f" }}>{errors.password.message}</CustomText>}
                             </View>
                         );
                     }}
@@ -135,7 +136,7 @@ export const Login = () => {
                 />
                 <Pressable onPress={handleSubmit(onSubmit)}>
                     <View
-                        className="mt-8 flex-row items-center justify-center rounded-md p-3"
+                        className="flex-row items-center justify-center p-3 mt-8 rounded-md"
                         style={{
                             backgroundColor: "#1890ff",
                         }}
@@ -143,23 +144,23 @@ export const Login = () => {
                         {resultStoreAccount.loading ? (
                             <ActivityIndicator size="small" color="#ffff" />
                         ) : (
-                            <Text className="text-center text-white">Đăng nhập</Text>
+                            <CustomText className="text-center text-white">Đăng nhập</CustomText>
                         )}
                     </View>
                 </Pressable>
                 {messageError && (
-                    <Text style={{ color: "#ff4d4f" }} className="mt-2 text-center">
+                    <CustomText style={{ color: "#ff4d4f" }} className="mt-2 text-center">
                         {messageError}
-                    </Text>
+                    </CustomText>
                 )}
-                <View className="mt-4 flex-row justify-center gap-x-1">
-                    <Text className="font-semibold text-blue-500">Bạn chưa có tài khoản?</Text>
+                <View className="flex-row justify-center mt-4 gap-x-1">
+                    <CustomText className="font-semibold text-blue-500">Bạn chưa có tài khoản?</CustomText>
                     <Pressable
                         onPress={() => {
                             navigation.navigate("Register");
                         }}
                     >
-                        <Text className="font-semibold text-blue-500">Đăng ký ngay</Text>
+                        <CustomText className="font-semibold text-blue-500">Đăng ký ngay</CustomText>
                     </Pressable>
                 </View>
             </View>

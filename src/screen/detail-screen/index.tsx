@@ -1,10 +1,11 @@
 import Slider from "@react-native-community/slider";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import * as React from "react";
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Pressable, View } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 
+import { CustomText } from "@/components";
 import { formatDuration } from "@/constants";
 import { ItemMusicType } from "@/type";
 import SoundPlayer from "react-native-sound-player";
@@ -54,12 +55,12 @@ export const DetailScreen = () => {
         }
     }, [isPlaying]);
     return (
-        <View className="h-full w-full flex-col justify-center" style={{ backgroundColor: "#21212a" }}>
+        <View className="flex-col justify-center w-full h-full" style={{ backgroundColor: "#21212a" }}>
             <Image
                 source={{
                     uri: item.image_music,
                 }}
-                className="absolute h-full w-full opacity-20"
+                className="absolute w-full h-full opacity-20"
             />
             <View className="items-center justify-between">
                 <Image
@@ -78,7 +79,7 @@ export const DetailScreen = () => {
             </View>
             <View className="absolute bottom-0 flex w-full gap-2 p-4">
                 <View className="flex-row items-center justify-between">
-                    <Text className="text-slate-200">{formatDuration(currentTime)}</Text>
+                    <CustomText className="text-slate-200">{formatDuration(currentTime)}</CustomText>
                     <Slider
                         style={{ width: "80%", height: 2 }}
                         maximumValue={item.seconds}
@@ -90,7 +91,7 @@ export const DetailScreen = () => {
                             SoundPlayer.seek(value);
                         }}
                     />
-                    <Text className="text-slate-200">{item.time_format}</Text>
+                    <CustomText className="text-slate-200">{item.time_format}</CustomText>
                 </View>
                 <View className="flex-row justify-between">
                     <Pressable>
