@@ -7,7 +7,10 @@ export const asyncThunkPostLogin = createAsyncThunk("asyncThunkPostLogin", async
     return response;
 });
 
-export const asyncThunkPostRegister = createAsyncThunk("asyncThunkPostRegister", async (payload: PayloadRegisterType) => {
-    const response = await apiAccount.postRegister(payload);
-    return response;
-});
+export const asyncThunkPostRegister = createAsyncThunk(
+    "asyncThunkPostRegister",
+    async (payload: PayloadRegisterType) => {
+        const response = await apiAccount.postRegister(payload);
+        return response;
+    }
+);

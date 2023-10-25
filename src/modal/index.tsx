@@ -20,15 +20,41 @@ const checkModal = (modalType: string) => {
     }
 };
 
+const propsModal = (modalType: string) => {
+    switch (modalType) {
+        case "DEFAULT": {
+            return {
+                transparent: true,
+            };
+        }
+        case "FULL_SCREEN": {
+            return {
+                transparent: false,
+            };
+        }
+        case "POPUP":
+            return {
+                popup: true,
+                animationType: "slide-up",
+            };
+    }
+};
+
 export const ContainerModal = () => {
     const { resultModal, handleCloseModal } = useModal();
-    const { data, modal, title, type } = resultModal;
+    const { data, modal_type, title, type } = resultModal;
 
     const WrapperModal = React.useMemo(() => checkModal(type), [type]);
     if (!WrapperModal) return null;
 
     return (
-        <Modal title={<Text className="text-left text-base">{title}</Text>} visible maskClosable onClose={handleCloseModal} {...modal}>
+        <Modal
+            title={<Text className="text-left text-base">{title}</Text>}
+            visible
+            maskClosable
+            onClose={handleCloseModal}
+            {...propsModal(modal_type)}
+        >
             <WrapperModal {...data} />
         </Modal>
     );

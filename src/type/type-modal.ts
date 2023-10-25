@@ -1,6 +1,6 @@
 export interface ModalType {
     title?: string;
     data?: any;
-    modal: Record<string, any>;
     type: string;
+    modal_type: "DEFAULT" | "FULL_SCREEN" | "POPUP";
 }

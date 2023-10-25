@@ -49,7 +49,7 @@ export const TabBottomGroup = () => {
                 }}
             />
             <TabBottom.Screen
-                name="alert"
+                name="browser"
                 component={ModalScreen}
                 options={{
                     headerShown: false,

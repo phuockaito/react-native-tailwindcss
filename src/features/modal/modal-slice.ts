@@ -4,18 +4,19 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialStateModal: ModalType = {
     title: "",
     data: {},
-    modal: {},
     type: "",
+    modal_type: "DEFAULT",
 };
+
 export const modalSlice = createSlice({
     name: "modal",
     initialState: initialStateModal,
     reducers: {
         openModal: (state: ModalType, action: PayloadAction<ModalType>) => {
-            const { title, data, modal, type } = action.payload;
+            const { title, data, modal_type, type } = action.payload;
             state.title = title;
             state.data = data;
-            state.modal = modal;
+            state.modal_type = modal_type;
             state.type = type;
         },
     },

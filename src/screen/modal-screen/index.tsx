@@ -25,9 +25,7 @@ export const ModalScreen = () => {
                 toggleModal({
                     type: ModalTypeEnum.ADD,
                     title: "Thêm mới",
-                    modal: {
-                        transparent: true,
-                    },
+                    modal_type: "DEFAULT",
                 });
             },
         },
@@ -37,9 +35,7 @@ export const ModalScreen = () => {
                 toggleModal({
                     type: ModalTypeEnum.MODAL_FULL_SCREEN,
                     title: "Thêm mới",
-                    modal: {
-                        transparent: false,
-                    },
+                    modal_type: "FULL_SCREEN",
                 });
             },
         },
@@ -49,10 +45,7 @@ export const ModalScreen = () => {
                 toggleModal({
                     type: ModalTypeEnum.MODAL_POPUP,
                     title: "popup",
-                    modal: {
-                        popup: true,
-                        animationType: "slide-up",
-                    },
+                    modal_type: "POPUP",
                 });
             },
         },

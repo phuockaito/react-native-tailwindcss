@@ -13,7 +13,7 @@ export const useModal = () => {
         toggleModal({
             title: "",
             type: ModalTypeEnum.NULL,
-            modal: {},
+            modal_type: "DEFAULT",
         });
     };
 

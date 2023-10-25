@@ -7,8 +7,14 @@ export const useAccount = () => {
     const dispatch = useAppDispatch();
     const resultStoreAccount = useAppSelector(accountStore);
 
-    const handlePostLogin = React.useCallback((payload: PayloadLoginType) => dispatch(asyncThunkPostLogin(payload)), [dispatch]);
-    const handlePostRegister = React.useCallback((payload: PayloadRegisterType) => dispatch(asyncThunkPostRegister(payload)), [dispatch]);
+    const handlePostLogin = React.useCallback(
+        (payload: PayloadLoginType) => dispatch(asyncThunkPostLogin(payload)),
+        [dispatch]
+    );
+    const handlePostRegister = React.useCallback(
+        (payload: PayloadRegisterType) => dispatch(asyncThunkPostRegister(payload)),
+        [dispatch]
+    );
     const handleLogout = React.useCallback(() => dispatch(onLogout()), [dispatch]);
 
     return {

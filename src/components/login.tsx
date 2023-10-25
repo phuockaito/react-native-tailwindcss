@@ -22,7 +22,10 @@ const schema = yup.object().shape({
         .required("Vui lòng nhập mật khẩu của bạn!")
         .min(8, "Mật khẩu cần dài ít nhất 8 ký tự")
         .max(32, "Mật khẩu phải có nhiều nhất 32 ký tự")
-        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "Ký tự chữ hoa, chữ thường, ký tự đặc biệt!"),
+        .matches(
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+            "Ký tự chữ hoa, chữ thường, ký tự đặc biệt!"
+        ),
 });
 
 export const Login = () => {
@@ -116,7 +119,11 @@ export const Login = () => {
                                     />
                                     <View className="mr-4">
                                         <Pressable onPress={() => setShowPassword(!showPassword)}>
-                                            <Feather name={showPassword ? "eye-off" : "eye"} size={18} color="#a5a6c4" />
+                                            <Feather
+                                                name={showPassword ? "eye-off" : "eye"}
+                                                size={18}
+                                                color="#a5a6c4"
+                                            />
                                         </Pressable>
                                     </View>
                                 </View>
