@@ -1,6 +1,6 @@
 import { CustomText } from "@/components";
-import { View } from "@gluestack-ui/themed";
 import React from "react";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export const UploadScreen = () => {

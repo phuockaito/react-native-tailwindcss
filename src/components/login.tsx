@@ -66,8 +66,8 @@ export const Login = () => {
                 backgroundColor: "#21212a",
             }}
         >
-            <View className="gap h-full w-full flex-col justify-center px-4">
-                <CustomText className="relative bottom-5 text-center text-2xl font-semibold text-white">Đăng nhập</CustomText>
+            <View className="flex-col justify-center w-full h-full px-4 gap">
+                <CustomText className="relative text-2xl font-semibold text-center text-white bottom-5">Đăng nhập</CustomText>
                 <Controller
                     control={control}
                     rules={{
@@ -75,11 +75,11 @@ export const Login = () => {
                     }}
                     render={({ field: { onChange, onBlur, value } }) => {
                         return (
-                            <View className="mb-6 gap-2">
+                            <View className="gap-2 mb-6">
                                 <CustomText className="text-slate-200">Email</CustomText>
                                 <TextInput
                                     autoCapitalize="none"
-                                    className="h-10 rounded-md px-3"
+                                    className="h-10 px-3 rounded-md"
                                     value={value}
                                     onChangeText={onChange}
                                     onBlur={onBlur}
@@ -104,10 +104,10 @@ export const Login = () => {
                         return (
                             <View className="gap-2">
                                 <CustomText className="text-slate-200">Password</CustomText>
-                                <View className="relative flex h-10 items-end justify-center">
+                                <View className="relative flex items-end justify-center h-10">
                                     <TextInput
                                         secureTextEntry={showPassword}
-                                        className="absolute h-full w-full rounded-md px-3 text-white"
+                                        className="absolute w-full h-full px-3 text-white rounded-md"
                                         value={value}
                                         onChangeText={onChange}
                                         onBlur={onBlur}
@@ -131,7 +131,7 @@ export const Login = () => {
                 />
                 <Pressable onPress={handleSubmit(onSubmit)}>
                     <View
-                        className="mt-8 flex-row items-center justify-center rounded-md p-3"
+                        className="flex-row items-center justify-center p-3 mt-8 rounded-md"
                         style={{
                             backgroundColor: "#1890ff",
                         }}
@@ -148,7 +148,7 @@ export const Login = () => {
                         {messageError}
                     </CustomText>
                 )}
-                <View className="mt-4 flex-row justify-center gap-x-1">
+                <View className="flex-row justify-center mt-4 gap-x-1">
                     <CustomText className="font-semibold text-blue-500">Bạn chưa có tài khoản?</CustomText>
                     <Pressable
                         onPress={() => {
