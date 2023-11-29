@@ -34,13 +34,8 @@ axiosClient.interceptors.response.use(
         }
         return response;
     },
-    (error: any) => {
-        throw new Error(
-            JSON.stringify({
-                status: error.response.status,
-                message: error.response.data.message,
-            })
-        );
+    (error) => {
+        throw error;
     }
 );
 
