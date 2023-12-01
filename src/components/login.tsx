@@ -12,10 +12,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { unwrapResult } from "@reduxjs/toolkit";
 import Feather from "react-native-vector-icons/Feather";
 import { CustomText } from "./custom-text";
-interface ResponseErrorType {
-    message: string;
-    status: number;
-}
 
 const schema = yup.object().shape({
     email: yup.string().email("Email không họp lệ").required("Vui lòng nhập email của bạn!"),
@@ -49,8 +45,7 @@ export const Login = () => {
                 await AsyncStorage.setItem("token", result.accessToken);
             }
         } catch (error: any) {
-            const response: ResponseErrorType = JSON.parse(error.message);
-            setMessageError(response.message);
+            setMessageError(error.response.data.message);
         }
     };
 
