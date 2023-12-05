@@ -26,8 +26,8 @@ export const CommentScreen = () => {
         </View>
     );
     if (!storeComment.data.length) return (
-        <View className="items-center justify-center flex-1 w-full h-full" style={{ backgroundColor: "#21212a" }}>
-            <View>
+        <View className="w-full h-full px-5 py-5" style={{ backgroundColor: "#21212a" }}>
+            <View className='items-center justify-center flex-1'>
                 <Text className='text-white'>Chưa có bình luận nào</Text>
             </View>
             <InputComment _id={_id} />
@@ -36,7 +36,7 @@ export const CommentScreen = () => {
 
     return (
         <View
-            className="w-full h-full px-5"
+            className="w-full h-full px-5 py-5"
             style={{ backgroundColor: "#21212a" }}
         >
             {
