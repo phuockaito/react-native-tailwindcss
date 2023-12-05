@@ -16,7 +16,7 @@ export const HomeStackGroup = () => {
             <HomeStack.Screen
                 name="Detail"
                 component={DetailScreen}
-                // options={{ presentation: "modal" }}
+            // options={{ presentation: "modal" }}
             />
         </HomeStack.Navigator>
     );

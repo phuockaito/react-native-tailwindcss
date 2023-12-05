@@ -4,6 +4,7 @@ import * as React from "react";
 import { Image, Pressable, View } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
+import Feather from "react-native-vector-icons/Feather";
 
 import { CustomText } from "@/components";
 import { formatDuration } from "@/constants";
@@ -55,25 +56,40 @@ export const DetailScreen = () => {
         }
     }, [isPlaying]);
     return (
-        <View className="flex-col justify-center w-full h-full" style={{ backgroundColor: "#21212a" }}>
+        <View className="w-full h-full" style={{ backgroundColor: "#21212a" }}>
             <Image
                 source={{
                     uri: item.image_music,
                 }}
                 className="absolute w-full h-full opacity-20"
             />
-            <View className="items-center justify-between">
-                <Image
-                    width={wp(60)}
-                    height={wp(60)}
-                    resizeMode="cover"
-                    className="border-[4px] border-yellow-300 rounded-full"
-                    source={{
-                        uri: item.image_music,
-                    }}
-                />
+            <View className="items-center justify-center flex-1 w-full">
+                <View className="relative flex flex-row items-center justify-between w-full">
+                    <View className="items-center justify-center flex-1">
+                        <Image
+                            width={wp(60)}
+                            height={wp(60)}
+                            resizeMode="cover"
+                            className="border-[4px] border-yellow-300 rounded-full"
+                            source={{
+                                uri: item.image_music,
+                            }}
+                        />
+                    </View>
+                    <View className="flex h-full gap-10 right-4">
+                        <Pressable>
+                            <SimpleLineIcons name="heart" size={25} color="#a5a6c4" />
+                        </Pressable>
+                        <Pressable>
+                            <SimpleLineIcons name="bubble" size={25} color="#a5a6c4" />
+                        </Pressable>
+                        <Pressable>
+                            <Feather name="list" size={25} color="#a5a6c4" />
+                        </Pressable>
+                    </View>
+                </View>
             </View>
-            <View className="absolute bottom-0 flex w-full gap-2 p-4">
+            <View className="justify-end w-full gap-2 px-4 py-5">
                 <View className="flex-row items-center justify-between">
                     <CustomText className="text-slate-200">{formatDuration(currentTime)}</CustomText>
                     <Slider
