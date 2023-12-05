@@ -8,7 +8,7 @@ const initialState: InitialStateMusicSliceType = {
 };
 
 export const musicSlice = createSlice({
-    name: "music",
+    name: "musicSlice",
     initialState,
     reducers: {},
     extraReducers(builder: ActionReducerMapBuilder<InitialStateMusicSliceType>) {

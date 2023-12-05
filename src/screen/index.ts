@@ -5,3 +5,4 @@ export * from "./home-screen";
 export * from "./modal-screen";
 export * from "./register-screen";
 export * from "./upload-screen";
+export * from "./detail-screen/navigator-detail"

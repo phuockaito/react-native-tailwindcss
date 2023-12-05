@@ -18,7 +18,7 @@ export interface AccountType {
     sum_comment?: number;
     sum_list_music?: number;
     sum_upload?: number;
-    password: string;
+    password?: string;
     updatedAt: string;
     createdAt: string;
 }

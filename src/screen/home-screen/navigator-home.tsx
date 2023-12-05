@@ -1,4 +1,4 @@
-import { DetailScreen, HomeScreen } from "@/screen";
+import { DetailStackGroup, HomeScreen } from "@/screen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const HomeStack = createNativeStackNavigator();
@@ -14,8 +14,11 @@ export const HomeStackGroup = () => {
                 component={HomeScreen}
             />
             <HomeStack.Screen
-                name="Detail"
-                component={DetailScreen}
+                options={{
+                    headerShown: false,
+                }}
+                name="DetailStackGroup"
+                component={DetailStackGroup}
             // options={{ presentation: "modal" }}
             />
         </HomeStack.Navigator>

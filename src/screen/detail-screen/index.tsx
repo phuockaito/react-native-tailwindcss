@@ -1,39 +1,32 @@
 import Slider from "@react-native-community/slider";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { ParamListBase, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import * as React from "react";
-import { Image, Pressable, View } from "react-native";
+import { Image, Pressable, View, Text } from 'react-native';
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Feather from "react-native-vector-icons/Feather";
 
 import { CustomText } from "@/components";
-import { formatDuration } from "@/constants";
+import { formatDuration, formatView } from "@/constants";
 import { ItemMusicType } from "@/type";
 import SoundPlayer from "react-native-sound-player";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 type IncidentRouteParams = {
     item: ItemMusicType;
 };
 
 export const DetailScreen = () => {
-    const navigation = useNavigation();
     const {
         params: { item },
     } = useRoute<RouteProp<Record<string, IncidentRouteParams>, string>>();
+    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
-    const [isPlaying, setIsPlaying] = React.useState<boolean>(true);
+    const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
     const [currentTime, setCurrentTime] = React.useState<number>(0);
 
     React.useLayoutEffect(() => {
         (async () => {
-            navigation.setOptions({
-                title: item.name_music,
-                headerStyle: {
-                    backgroundColor: "#21212a",
-                },
-                headerTintColor: "white",
-                headerBackTitleVisible: false,
-            });
             SoundPlayer.onFinishedLoading((success: boolean) => success);
             SoundPlayer.onFinishedPlaying((success: boolean) => success);
             SoundPlayer.playUrl(item.src_music);
@@ -78,9 +71,16 @@ export const DetailScreen = () => {
                     </View>
                     <View className="flex h-full gap-10 right-4">
                         <Pressable>
-                            <SimpleLineIcons name="heart" size={25} color="#a5a6c4" />
+                            <View className="items-center justify-center">
+                                <SimpleLineIcons name="heart" size={25} color="#a5a6c4" />
+                                <Text className="mt-1 text-white">{formatView(item.favorite)}</Text>
+                            </View>
                         </Pressable>
-                        <Pressable>
+                        <Pressable
+                            onPress={() => {
+                                navigation.navigate("CommentScreen");
+                            }}
+                        >
                             <SimpleLineIcons name="bubble" size={25} color="#a5a6c4" />
                         </Pressable>
                         <Pressable>

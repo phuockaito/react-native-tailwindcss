@@ -15,7 +15,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
     return (
         <Pressable
             onPress={() => {
-                navigation.navigate("Detail", { item });
+                navigation.navigate("DetailStackGroup", { item });
             }}
         >
             <View className="gap-1">
@@ -26,7 +26,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                         priority: FastImage.priority.high,
                         cache: FastImage.cacheControl.immutable,
                     }}
-                    className="rounded-xl border border-white"
+                    className="border border-white rounded-xl"
                     resizeMode={FastImage.resizeMode.cover}
                 />
                 <CustomText className="pt-2 text-white">
@@ -40,7 +40,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                         <EvilIcons name="eye" size={20} color="#a5a6c4" />
                         <CustomText style={{ color: "#a5a6c4" }}>{formatView(item.view)}</CustomText>
                     </View>
-                    <View className="ml-1 flex-row items-center gap-1">
+                    <View className="flex-row items-center gap-1 ml-1">
                         <EvilIcons name="heart" size={20} color="#a5a6c4" />
                         <CustomText style={{ color: "#a5a6c4" }}>{formatView(item.favorite)}</CustomText>
                     </View>
