@@ -26,10 +26,10 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                         priority: FastImage.priority.high,
                         cache: FastImage.cacheControl.immutable,
                     }}
-                    className="rounded-xl"
+                    className="rounded-xl border border-white"
                     resizeMode={FastImage.resizeMode.cover}
                 />
-                <CustomText className="text-white ">
+                <CustomText className="pt-2 text-white">
                     {item.name_music.length > 25 ? `${item.name_music.slice(0, 25)}...` : item.name_music}
                 </CustomText>
                 <CustomText style={{ color: "#01aaed" }}>
