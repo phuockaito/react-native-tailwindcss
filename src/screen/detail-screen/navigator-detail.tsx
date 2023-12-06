@@ -30,7 +30,7 @@ export const DetailStackGroup = () => {
                             navigation.navigate("Home");
                         }}
                     >
-                        <Feather name="chevron-left" size={25} color="#ffff" />
+                        <Feather name="chevron-left" size={28} color="#ffff" />
                     </Pressable>,
                     headerShown: true,
                     headerBackVisible: true,

@@ -49,6 +49,7 @@ export const DetailScreen = () => {
         }
     }, [isPlaying]);
     return (
+
         <View className="w-full h-full" style={{ backgroundColor: "#21212a" }}>
             <Image
                 source={{
