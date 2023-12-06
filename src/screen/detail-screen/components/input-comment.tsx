@@ -1,28 +1,31 @@
 import React from 'react'
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
 import { Controller, useForm } from "react-hook-form";
-import { useAccount, useComment } from '@/hooks';
+import { useComment } from '@/hooks';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { unwrapResult } from '@reduxjs/toolkit';
 import Feather from "react-native-vector-icons/Feather";
 
+interface InputCommentProps {
+    _id: string;
+    access_token: string | null;
+}
 
-export const InputComment = ({ _id }: { _id: string }) => {
+export const InputComment = ({ _id, access_token }: InputCommentProps) => {
     const {
         handleSubmit,
         control,
         reset
     } = useForm();
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-    const { resultStoreAccount } = useAccount();
     const { fetchCreateComment, } = useComment();
 
     const [loading, setLoading] = React.useState(false);
 
     const onSubmit = async (data: any) => {
         try {
-            if (!resultStoreAccount.access_token) {
+            if (!access_token) {
                 navigation.navigate("Person");
             } else {
                 if (!loading) {
@@ -40,7 +43,13 @@ export const InputComment = ({ _id }: { _id: string }) => {
     }
 
     return (
-        <View className='flex-row'>
+        <View
+            className='flex-row'
+            style={{
+                borderColor: "#ffff",
+                borderTopWidth: 0.5
+            }}
+        >
             <View className='flex-1'>
                 <Controller
                     control={control}
@@ -51,13 +60,13 @@ export const InputComment = ({ _id }: { _id: string }) => {
                         return (
                             <TextInput
                                 autoCapitalize="none"
-                                className="px-3 py-3 rounded-l"
+                                className="px-6 py-4"
                                 multiline={true}
                                 numberOfLines={10}
+                                placeholder="Viết bình luận..."
                                 style={{
                                     height: 40,
                                     textAlignVertical: 'top',
-                                    backgroundColor: "#3e3f44",
                                     color: "#ffff",
                                 }}
                                 value={value}
@@ -71,10 +80,7 @@ export const InputComment = ({ _id }: { _id: string }) => {
                 />
             </View>
             <View
-                className='rounded-r w-[40px] justify-center items-center'
-                style={{
-                    backgroundColor: "#3e3f44",
-                }}
+                className='w-[40px] justify-center items-center mr-2'
             >
                 <Pressable
                     onPress={handleSubmit(onSubmit)}

@@ -26,7 +26,7 @@ export const CardItem = ({ item }: { item: ItemMusicType }) => {
                         priority: FastImage.priority.high,
                         cache: FastImage.cacheControl.immutable,
                     }}
-                    className="border border-white rounded-xl"
+                    className="border border-white rounded-lg"
                     resizeMode={FastImage.resizeMode.cover}
                 />
                 <CustomText className="pt-2 text-white">

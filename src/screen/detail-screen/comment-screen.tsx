@@ -1,16 +1,16 @@
 
 import { RouteProp, useRoute } from '@react-navigation/native';
 import React from 'react'
-import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 
-import { useComment } from '@/hooks';
-import { CommentType } from '@/type';
-import { InputComment } from './components';
+import { useAccount, useComment } from '@/hooks';
+import { InputComment, ListComment } from './components';
 
 export const CommentScreen = () => {
     const { params: { _id } } = useRoute<RouteProp<Record<string, { _id: string }>, string>>();
-
     const { fetchGetComment, storeComment } = useComment();
+    const { resultStoreAccount } = useAccount();
+    const { access_token } = resultStoreAccount;
 
     React.useEffect(() => {
         (async () => {
@@ -26,53 +26,27 @@ export const CommentScreen = () => {
         </View>
     );
     if (!storeComment.data.length) return (
-        <View className="w-full h-full px-5 py-5" style={{ backgroundColor: "#21212a" }}>
+        <View className="w-full h-full py-5" style={{ backgroundColor: "#21212a" }}>
             <View className='items-center justify-center flex-1'>
                 <Text className='text-white'>Chưa có bình luận nào</Text>
             </View>
-            <InputComment _id={_id} />
+            <InputComment access_token={access_token} _id={_id} />
         </View>
     );
 
     return (
         <View
-            className="w-full h-full px-5 py-5"
+            className="w-full h-full py-5"
             style={{ backgroundColor: "#21212a" }}
         >
-            {
-                storeComment.data.length ?
-                    <ScrollView
-                        className='flex-1 gap-y-3'
-                        showsHorizontalScrollIndicator={false}
-                        showsVerticalScrollIndicator={false}
-                    >
-                        {
-                            storeComment.data.map((item: CommentType) => (
-                                <View className='flex-row gap-4' key={item._id}>
-                                    <View
-                                        className="w-12 h-12"
-                                    >
-                                        <Image
-                                            source={{
-                                                uri: item.account.image,
-                                            }}
-                                            className="w-full h-full rounded-full"
-                                        />
-                                    </View>
-                                    <View className='flex-1'>
-                                        <Text className='mb-1 text-lg font-semibold text-white'>{item.account.user_name}</Text>
-                                        <Text className='text-sm font-medium text-left text-white'>
-                                            {item.content}
-                                        </Text>
-                                    </View>
-                                </View>
-                            ))
-                        }
-                    </ScrollView>
-                    :
-                    <Text className='text-white'>Chưa có bình luận nào</Text>
-            }
-            <InputComment _id={_id} />
+            <ListComment
+                data={storeComment.data}
+                id_account={resultStoreAccount.data?._id}
+            />
+            <InputComment
+                access_token={access_token}
+                _id={_id}
+            />
         </View>
     )
 }

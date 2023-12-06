@@ -10,4 +10,8 @@ export const apiComment = {
         const url = "comment/create";
         return axiosClient.post(url, data);
     },
+    deleteComment: (id: string): Promise<{ id: string }> => {
+        const url = `comment/delete-by-id?_id=${id}`;
+        return axiosClient.delete(url);
+    }
 }

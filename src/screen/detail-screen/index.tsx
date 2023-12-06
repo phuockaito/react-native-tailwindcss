@@ -4,7 +4,7 @@ import * as React from "react";
 import { Image, Pressable, View, Text } from 'react-native';
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-import Feather from "react-native-vector-icons/Feather";
+// import Feather from "react-native-vector-icons/Feather";
 
 import { CustomText } from "@/components";
 import { formatDuration, formatView } from "@/constants";
@@ -63,7 +63,11 @@ export const DetailScreen = () => {
                             width={wp(60)}
                             height={wp(60)}
                             resizeMode="cover"
-                            className="border-[4px] border-yellow-300 rounded-full"
+                            style={{
+                                borderRadius: 999,
+                                borderColor: "yellow",
+                                borderWidth: 3
+                            }}
                             source={{
                                 uri: item.image_music,
                             }}
@@ -76,16 +80,23 @@ export const DetailScreen = () => {
                                 <Text className="mt-1 text-white">{formatView(item.favorite)}</Text>
                             </View>
                         </Pressable>
+                        <View className="items-center justify-center">
+                            <SimpleLineIcons name="eye" size={25} color="#a5a6c4" />
+                            <Text className="mt-1 text-white">{formatView(item.view)}</Text>
+                        </View>
                         <Pressable
                             onPress={() => {
                                 navigation.navigate("CommentScreen");
                             }}
                         >
-                            <SimpleLineIcons name="bubble" size={25} color="#a5a6c4" />
+                            <View className="items-center justify-center">
+                                <SimpleLineIcons name="bubble" size={25} color="#a5a6c4" />
+                                <Text className="mt-1 text-white">{formatView(item.sum_comment)}</Text>
+                            </View>
                         </Pressable>
-                        <Pressable>
+                        {/* <Pressable>
                             <Feather name="list" size={25} color="#a5a6c4" />
-                        </Pressable>
+                        </Pressable> */}
                     </View>
                 </View>
             </View>

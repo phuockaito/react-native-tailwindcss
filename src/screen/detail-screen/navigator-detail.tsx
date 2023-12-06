@@ -1,7 +1,10 @@
-import { ItemMusicType } from "@/type";
-import { RouteProp, useRoute } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ParamListBase, RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { NativeStackNavigationProp, createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import { Pressable } from "react-native";
+import Feather from "react-native-vector-icons/Feather";
+
+import { ItemMusicType } from "@/type";
 import { DetailScreen } from ".";
 import { CommentScreen } from "./comment-screen";
 
@@ -11,6 +14,8 @@ type IncidentRouteParams = {
 };
 
 export const DetailStackGroup = () => {
+    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
     const {
         params: { item },
     } = useRoute<RouteProp<Record<string, IncidentRouteParams>, string>>();
@@ -20,13 +25,18 @@ export const DetailStackGroup = () => {
             <DetailStack.Screen
                 name="Detail"
                 options={{
+                    headerLeft: () => <Pressable
+                        onPress={() => {
+                            navigation.navigate("Home");
+                        }}
+                    >
+                        <Feather name="chevron-left" size={25} color="#ffff" />
+                    </Pressable>,
                     headerShown: true,
+                    headerBackVisible: true,
                     headerTintColor: "white",
                     title: item.name_music,
-                    headerBackVisible: true,
-                    headerStyle: {
-                        backgroundColor: "#21212a",
-                    },
+                    headerTransparent: true,
                 }}
                 initialParams={{ item }}
                 component={DetailScreen}
@@ -37,9 +47,10 @@ export const DetailStackGroup = () => {
                 component={CommentScreen}
                 options={{
                     headerBackTitleVisible: false,
+                    headerLargeTitleShadowVisible: false,
                     headerShown: true,
                     headerTintColor: "white",
-                    title: item.name_music,
+                    title: "Bình luận",
                     headerBackVisible: true,
                     headerStyle: {
                         backgroundColor: "#21212a",

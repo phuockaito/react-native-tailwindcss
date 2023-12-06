@@ -19,3 +19,12 @@ export const asyncThunkCreateComment = createAsyncThunk("asyncThunkCreateComment
         return rejectWithValue(error);
     }
 });
+
+export const asyncThunkDeleteComment = createAsyncThunk("asyncThunkDeleteComment", async (id: string, { rejectWithValue }) => {
+    try {
+        const response = await apiComment.deleteComment(id);
+        return response;
+    } catch (error: any) {
+        return rejectWithValue(error);
+    }
+});
