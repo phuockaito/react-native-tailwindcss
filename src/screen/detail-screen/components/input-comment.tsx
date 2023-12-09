@@ -2,45 +2,71 @@ import React from 'react'
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
 import { Controller, useForm } from "react-hook-form";
 import { useComment } from '@/hooks';
-import { ParamListBase, useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { unwrapResult } from '@reduxjs/toolkit';
 import Feather from "react-native-vector-icons/Feather";
+import { Modal } from "@ant-design/react-native";
+import { CustomText } from '@/components';
+import { UpdateCommentType } from '@/type';
 
 interface InputCommentProps {
     _id: string;
     access_token: string | null;
+    commentUpdate?: UpdateCommentType | null;
+    setCommentUpdate: (comment: null) => void
 }
 
-export const InputComment = ({ _id, access_token }: InputCommentProps) => {
+export const InputComment = ({
+    _id,
+    access_token,
+    commentUpdate,
+    setCommentUpdate
+}: InputCommentProps) => {
     const {
         handleSubmit,
         control,
-        reset
+        reset,
+        setValue
     } = useForm();
-    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-    const { fetchCreateComment, } = useComment();
+    const { fetchCreateComment, handleUpdateComment } = useComment();
 
     const [loading, setLoading] = React.useState(false);
 
     const onSubmit = async (data: any) => {
+        if (!access_token) {
+            return Modal.alert(
+                <CustomText>Thông báo</CustomText>,
+                <CustomText>Vui lòng đăng nhập</CustomText>, [
+                {
+                    text: "Đóng",
+                    onPress: () => { },
+                    style: "cancel",
+                },
+            ]);
+        }
         try {
-            if (!access_token) {
-                navigation.navigate("Person");
+            setLoading(true);
+            if (commentUpdate) {
+                const comment = await handleUpdateComment({ ...commentUpdate, content: data.content });
+                await unwrapResult(comment);
+                setCommentUpdate(null)
             } else {
-                if (!loading) {
-                    setLoading(true);
-                    const result = await fetchCreateComment({ content: data.content, id_music: _id });
-                    await unwrapResult(result);
-                    setLoading(false);
-                    reset();
-                }
+                const result = await fetchCreateComment({ content: data.content, id_music: _id });
+                await unwrapResult(result);
             }
+            setLoading(false);
+            reset();
         } catch (error) {
             setLoading(false);
             console.log("error", error);
         }
-    }
+    };
+
+
+    React.useEffect(() => {
+        if (commentUpdate) {
+            setValue("content", commentUpdate.content);
+        }
+    }, [commentUpdate, setValue]);
 
     return (
         <View
@@ -82,16 +108,16 @@ export const InputComment = ({ _id, access_token }: InputCommentProps) => {
             <View
                 className='w-[40px] justify-center items-center mr-2'
             >
-                <Pressable
-                    onPress={handleSubmit(onSubmit)}
-                >
-                    {
-                        loading
-                            ? <ActivityIndicator size="small" color="#ffff" />
-                            :
+                {
+                    loading
+                        ? <ActivityIndicator size="small" color="#ffff" />
+                        : <Pressable
+                            onPress={handleSubmit(onSubmit)}
+                        >
                             <Feather name="send" size={18} color="#a5a6c4" />
-                    }
-                </Pressable>
+                        </Pressable>
+                }
+
             </View>
         </View>
     )

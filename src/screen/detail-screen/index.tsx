@@ -4,19 +4,20 @@ import * as React from "react";
 import { Image, Pressable, View, Text } from 'react-native';
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-// import Feather from "react-native-vector-icons/Feather";
 
 import { CustomText } from "@/components";
 import { formatDuration, formatView } from "@/constants";
 import { ItemMusicType } from "@/type";
 import SoundPlayer from "react-native-sound-player";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useMusic } from "@/hooks";
 
 type IncidentRouteParams = {
     item: ItemMusicType;
 };
 
 export const DetailScreen = () => {
+    const { fetchGetMusic, handleCreatePlayHistoryMusic, resultStoreMusic } = useMusic();
     const {
         params: { item },
     } = useRoute<RouteProp<Record<string, IncidentRouteParams>, string>>();
@@ -30,8 +31,11 @@ export const DetailScreen = () => {
             SoundPlayer.onFinishedLoading((success: boolean) => success);
             SoundPlayer.onFinishedPlaying((success: boolean) => success);
             SoundPlayer.playUrl(item.src_music);
+            fetchGetMusic(item._id);
+            handleCreatePlayHistoryMusic(item._id);
         })();
-    }, []);
+    }, [fetchGetMusic, item._id, item.src_music, handleCreatePlayHistoryMusic]);
+
 
     React.useEffect(() => {
         const timer = setInterval(async () => {
@@ -41,6 +45,7 @@ export const DetailScreen = () => {
 
         return () => clearInterval(timer);
     }, [isPlaying]);
+
     React.useEffect(() => {
         if (isPlaying) {
             SoundPlayer.play();
@@ -48,8 +53,8 @@ export const DetailScreen = () => {
             SoundPlayer.pause();
         }
     }, [isPlaying]);
-    return (
 
+    return (
         <View className="w-full h-full" style={{ backgroundColor: "#21212a" }}>
             <Image
                 source={{
@@ -92,12 +97,9 @@ export const DetailScreen = () => {
                         >
                             <View className="items-center justify-center">
                                 <SimpleLineIcons name="bubble" size={25} color="#a5a6c4" />
-                                <Text className="mt-1 text-white">{formatView(item.sum_comment)}</Text>
+                                <Text className="mt-1 text-white">{formatView(resultStoreMusic.music ? resultStoreMusic.music.sum_comment : item.sum_comment)}</Text>
                             </View>
                         </Pressable>
-                        {/* <Pressable>
-                            <Feather name="list" size={25} color="#a5a6c4" />
-                        </Pressable> */}
                     </View>
                 </View>
             </View>

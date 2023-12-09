@@ -22,3 +22,8 @@ export interface CreateCommentType {
     content: string;
     id_music: string;
 }
+
+export interface UpdateCommentType {
+    content: string;
+    _id: string;
+}

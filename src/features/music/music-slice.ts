@@ -1,10 +1,11 @@
 import { InitialStateMusicSliceType } from "@/type";
 import { ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
-import { asyncThunkGetTopViewsMusic } from "./patch-api";
+import { asyncThunkGetTopViewsMusic, asyncThunksMusic } from "./patch-api";
 
 const initialState: InitialStateMusicSliceType = {
     data: [],
     loading: true,
+    music: null
 };
 
 export const musicSlice = createSlice({
@@ -24,6 +25,10 @@ export const musicSlice = createSlice({
                 state.loading = false;
                 state.data = [];
             });
+        builder
+            .addCase(asyncThunksMusic.fulfilled, (state, action) => {
+                state.music = action.payload.data;
+            })
     },
 });
 

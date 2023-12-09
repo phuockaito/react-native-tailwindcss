@@ -14,7 +14,7 @@ export const ModalScreen = () => {
                 Modal.alert(<CustomText>Thông báo</CustomText>, <CustomText>Nội dung</CustomText>, [
                     {
                         text: "Đóng",
-                        onPress: () => {},
+                        onPress: () => { },
                         style: "cancel",
                     },
                 ]);
@@ -53,7 +53,7 @@ export const ModalScreen = () => {
     ];
 
     return (
-        <SafeAreaView className="h-full w-full items-center justify-center">
+        <SafeAreaView className="items-center justify-center w-full h-full">
             <Flex
                 style={{
                     padding: 12,
@@ -61,7 +61,7 @@ export const ModalScreen = () => {
                 }}
             >
                 {items.map((item, index) => (
-                    <Pressable key={index} className="rounded-lg border border-slate-600 p-3" onPress={item.onPress}>
+                    <Pressable key={index} className="p-3 border rounded-lg border-slate-600" onPress={item.onPress}>
                         <CustomText className="text-slate-600">{item.title}</CustomText>
                     </Pressable>
                 ))}

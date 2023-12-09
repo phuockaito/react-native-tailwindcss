@@ -1,6 +1,6 @@
 import { InitialStateCommentSliceType } from "@/type";
 import { createSlice, ActionReducerMapBuilder } from '@reduxjs/toolkit';
-import { asyncThunkCreateComment, asyncThunkDeleteComment, asyncThunkGetComment } from "./patch-api";
+import { asyncThunkCreateComment, asyncThunkDeleteComment, asyncThunkGetComment, asyncThunkUpdateComment } from "./patch-api";
 
 const initialState: InitialStateCommentSliceType = {
     data: [],
@@ -32,6 +32,14 @@ export const CommentSlice = createSlice({
         builder
             .addCase(asyncThunkDeleteComment.fulfilled, (state, action) => {
                 state.data = state.data.filter((item) => item._id !== action.payload.id);
+            })
+
+        builder
+            .addCase(asyncThunkUpdateComment.fulfilled, (state, action) => {
+                const index = state.data.findIndex((item) => item._id === action.payload.id);
+                if (index !== -1) {
+                    state.data[index] = action.payload.data;
+                }
             })
     }
 })

@@ -14,7 +14,7 @@ export const HomeScreen = () => {
     if (resultStoreMusic.loading) {
         return (
             <SafeAreaView style={{ backgroundColor: "#21212a", padding: 20 }}>
-                <View className="h-full items-center justify-center">
+                <View className="items-center justify-center h-full">
                     <ActivityIndicator size="large" color="#ffff" className="mr-2" />
                 </View>
             </SafeAreaView>
@@ -35,6 +35,12 @@ export const HomeScreen = () => {
                     data={resultStoreMusic.data}
                     renderItem={({ item }) => <CardItem item={item} />}
                     keyExtractor={(item) => item._id}
+                    // scrollToEnd={(params:any) => {
+                    //     console.log({params})
+                    // }}
+                    onEndReached={() => {
+                        console.log("first item reached")
+                    }}
                 />
             </View>
         </SafeAreaView>

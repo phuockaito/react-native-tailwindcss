@@ -1,6 +1,7 @@
 export interface InitialStateMusicSliceType {
     data: ItemMusicType[];
     loading: boolean;
+    music: ItemMusicType | null
 }
 
 export interface ItemMusicType {

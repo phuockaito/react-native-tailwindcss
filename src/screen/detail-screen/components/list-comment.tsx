@@ -1,5 +1,5 @@
 import { useComment } from '@/hooks';
-import { CommentType } from '@/type'
+import { CommentType, UpdateCommentType } from '@/type'
 import moment from 'moment';
 import React from 'react'
 import { Image, Pressable, ScrollView, Text, View } from 'react-native'
@@ -8,10 +8,11 @@ import Entypo from "react-native-vector-icons/Entypo";
 
 interface ListCommentProps {
     data: CommentType[],
-    id_account?: string
+    id_account?: string,
+    setCommentUpdate: (comment: UpdateCommentType) => void
 }
 
-export const ListComment = ({ data, id_account }: ListCommentProps) => {
+export const ListComment = ({ data, id_account, setCommentUpdate }: ListCommentProps) => {
     const { handleDeleteComment } = useComment();
 
     return (
@@ -42,12 +43,25 @@ export const ListComment = ({ data, id_account }: ListCommentProps) => {
                                         <Text className='text-white'>{moment(item.createdAt).fromNow()}</Text>
                                     </View>
                                 </View>
-                                {item.id_account === id_account &&
-                                    <Pressable
-                                        onPress={() => handleDeleteComment(item._id)}
-                                    >
-                                        <AntDesign name="delete" size={20} color="#a5a6c4" />
-                                    </Pressable>
+                                {
+                                    item.id_account === id_account &&
+                                    <View className='flex-row items-center gap-3'>
+                                        <Pressable
+                                            onPress={() => {
+                                                setCommentUpdate({
+                                                    _id: item._id,
+                                                    content: item.content
+                                                })
+                                            }}
+                                        >
+                                            <AntDesign name="edit" size={20} color="#a5a6c4" />
+                                        </Pressable>
+                                        <Pressable
+                                            onPress={() => handleDeleteComment(item._id)}
+                                        >
+                                            <AntDesign name="delete" size={20} color="#a5a6c4" />
+                                        </Pressable>
+                                    </View>
                                 }
                             </View>
                             <Text className='text-base font-medium text-left text-white'>
