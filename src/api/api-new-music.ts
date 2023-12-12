@@ -1,4 +1,4 @@
-import { ItemMusicType } from "@/type";
+import { ItemMusicType, ItemPlayHistory } from "@/type";
 import { axiosClient } from "./axios-client";
 
 export const apiNewMusic = {
@@ -15,5 +15,9 @@ export const apiNewMusic = {
         return axiosClient.post(url, {
             idMusic: id
         });
+    },
+    playHistoryMusic: (): Promise<{ data: ItemPlayHistory[] }> => {
+        const url = "play-history/get-by-token";
+        return axiosClient.get(url);
     }
 };

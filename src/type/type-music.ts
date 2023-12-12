@@ -4,6 +4,15 @@ export interface InitialStateMusicSliceType {
     music: ItemMusicType | null
 }
 
+export interface ItemPlayHistory {
+    createdAt: string;
+    id_account: string;
+    id_music: string;
+    music: ItemMusicType;
+    updatedAt: string;
+    _id: string;
+}
+
 export interface ItemMusicType {
     _id: string;
     id_account: string;

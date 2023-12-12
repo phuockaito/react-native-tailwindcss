@@ -27,3 +27,12 @@ export const asyncThunksCreatePlayHistoryMusic = createAsyncThunk("asyncThunksCr
         return rejectWithValue(error);
     }
 });
+
+export const asyncThunksPlayHistoryMusic = createAsyncThunk("asyncThunksPlayHistoryMusic", async (_, { rejectWithValue }) => {
+    try {
+        const response = await apiNewMusic.playHistoryMusic();
+        return response;
+    } catch (error: any) {
+        return rejectWithValue(error);
+    }
+});

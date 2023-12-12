@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { HistoryScreen, ModalScreen, UploadScreen } from "@/screen";
+import { HistoryStackGroup, ModalScreen, UploadScreen } from "@/screen";
 import Octicons from "react-native-vector-icons/Octicons";
 
 import { AccountStackGroup } from "@/screen/account-screen/navigator-account";
@@ -42,7 +42,7 @@ export const TabBottomGroup = () => {
             />
             <TabBottom.Screen
                 name="History"
-                component={HistoryScreen}
+                component={HistoryStackGroup}
                 options={{
                     headerShown: false,
                     tabBarLabel: "Đã nghe",

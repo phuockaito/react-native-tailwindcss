@@ -27,7 +27,7 @@ export const DetailStackGroup = () => {
                 options={{
                     headerLeft: () => <Pressable
                         onPress={() => {
-                            navigation.navigate("Home");
+                            navigation.goBack();
                         }}
                     >
                         <Feather name="chevron-left" size={28} color="#ffff" />

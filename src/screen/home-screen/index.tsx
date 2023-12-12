@@ -35,9 +35,6 @@ export const HomeScreen = () => {
                     data={resultStoreMusic.data}
                     renderItem={({ item }) => <CardItem item={item} />}
                     keyExtractor={(item) => item._id}
-                    // scrollToEnd={(params:any) => {
-                    //     console.log({params})
-                    // }}
                     onEndReached={() => {
                         console.log("first item reached")
                     }}
